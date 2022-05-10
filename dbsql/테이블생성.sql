@@ -1,698 +1,698 @@
-ALTER TABLE s2_list
+ALTER TABLE MY_SCHEMA.s2_list
 	DROP
 		CONSTRAINT FK_s2_zipcode_TO_s2_list
 		CASCADE;
 
-ALTER TABLE s1_pd
+ALTER TABLE MY_SCHEMA.s1_pd
 	DROP
 		CONSTRAINT FK_s1_category_TO_s1_pd
 		CASCADE;
 
-ALTER TABLE s1_to
+ALTER TABLE MY_SCHEMA.s1_to
 	DROP
 		CONSTRAINT FK_s1_od_TO_s1_to
 		CASCADE;
 
-ALTER TABLE s1_oddt
+ALTER TABLE MY_SCHEMA.s1_oddt
 	DROP
 		CONSTRAINT FK_s1_od_TO_s1_oddt
 		CASCADE;
 
-ALTER TABLE s1_oddt
+ALTER TABLE MY_SCHEMA.s1_oddt
 	DROP
 		CONSTRAINT FK_s1_pd_TO_s1_oddt
 		CASCADE;
 
-ALTER TABLE s1_oding
+ALTER TABLE MY_SCHEMA.s1_oding
 	DROP
 		CONSTRAINT FK_s1_od_TO_s1_oding
 		CASCADE;
 
-ALTER TABLE s2_store
+ALTER TABLE MY_SCHEMA.s2_store
 	DROP
 		CONSTRAINT FK_s2_list_TO_s2_store
 		CASCADE;
 
-ALTER TABLE s2_menu
+ALTER TABLE MY_SCHEMA.s2_menu
 	DROP
 		CONSTRAINT FK_s2_store_TO_s2_menu
 		CASCADE;
 
-ALTER TABLE s2_review
+ALTER TABLE MY_SCHEMA.s2_review
 	DROP
 		CONSTRAINT FK_s2_store_TO_s2_review
 		CASCADE;
 
-ALTER TABLE s2_review
+ALTER TABLE MY_SCHEMA.s2_review
 	DROP
 		CONSTRAINT FK_s2_mem_TO_s2_review
 		CASCADE;
 
-ALTER TABLE s2_coment
+ALTER TABLE MY_SCHEMA.s2_coment
 	DROP
 		CONSTRAINT FK_s2_review_TO_s2_coment
 		CASCADE;
 
-ALTER TABLE s2_coment
+ALTER TABLE MY_SCHEMA.s2_coment
 	DROP
 		CONSTRAINT FK_s2_mem_TO_s2_coment
 		CASCADE;
 
-ALTER TABLE s2_list
+ALTER TABLE MY_SCHEMA.s2_list
 	DROP
 		PRIMARY KEY
 		CASCADE
 		KEEP INDEX;
 
-ALTER TABLE s2_zipcode
+ALTER TABLE MY_SCHEMA.s2_zipcode
 	DROP
 		PRIMARY KEY
 		CASCADE
 		KEEP INDEX;
 
-ALTER TABLE s1_category
+ALTER TABLE MY_SCHEMA.s1_category
 	DROP
 		PRIMARY KEY
 		CASCADE
 		KEEP INDEX;
 
-ALTER TABLE s1_pd
+ALTER TABLE MY_SCHEMA.s1_pd
 	DROP
 		PRIMARY KEY
 		CASCADE
 		KEEP INDEX;
 
-ALTER TABLE s1_od
+ALTER TABLE MY_SCHEMA.s1_od
 	DROP
 		PRIMARY KEY
 		CASCADE
 		KEEP INDEX;
 
-ALTER TABLE s2_mem
+ALTER TABLE MY_SCHEMA.s2_mem
 	DROP
 		PRIMARY KEY
 		CASCADE
 		KEEP INDEX;
 
-ALTER TABLE s2_store
+ALTER TABLE MY_SCHEMA.s2_store
 	DROP
 		PRIMARY KEY
 		CASCADE
 		KEEP INDEX;
 
-ALTER TABLE s2_review
+ALTER TABLE MY_SCHEMA.s2_review
 	DROP
 		PRIMARY KEY
 		CASCADE
 		KEEP INDEX;
 
-DROP INDEX PK_s2_list;
+DROP INDEX MY_SCHEMA.PK_s2_list;
 
-DROP INDEX PK_s2_zipcode;
+DROP INDEX MY_SCHEMA.PK_s2_zipcode;
 
-DROP INDEX PK_s1_category;
+DROP INDEX MY_SCHEMA.PK_s1_category;
 
-DROP INDEX PK_s1_pd;
+DROP INDEX MY_SCHEMA.PK_s1_pd;
 
-DROP INDEX PK_s1_od;
+DROP INDEX MY_SCHEMA.PK_s1_od;
 
-DROP INDEX PK_s2_mem;
+DROP INDEX MY_SCHEMA.PK_s2_mem;
 
-DROP INDEX PK_s2_store;
+DROP INDEX MY_SCHEMA.PK_s2_store;
 
-DROP INDEX PK_s2_review;
+DROP INDEX MY_SCHEMA.PK_s2_review;
 
-/* Áö¿ª¸®½ºÆ® */
-DROP TABLE s2_list 
+/* ì§€ì—­ë¦¬ìŠ¤íŠ¸ */
+DROP TABLE MY_SCHEMA.s2_list 
 	CASCADE CONSTRAINTS;
 
-/* ÁÖ¼ÒÁ¤º¸ */
-DROP TABLE s2_zipcode 
+/* ì£¼ì†Œì •ë³´ */
+DROP TABLE MY_SCHEMA.s2_zipcode 
 	CASCADE CONSTRAINTS;
 
-/* »óÇ°Ä«Å×°í¸® */
-DROP TABLE s1_category 
+/* ìƒí’ˆì¹´í…Œê³ ë¦¬ */
+DROP TABLE MY_SCHEMA.s1_category 
 	CASCADE CONSTRAINTS;
 
-/* »óÇ°Á¤º¸ */
-DROP TABLE s1_pd 
+/* ìƒí’ˆì •ë³´ */
+DROP TABLE MY_SCHEMA.s1_pd 
 	CASCADE CONSTRAINTS;
 
-/* ¸ÅÃâÁ¤º¸ */
-DROP TABLE s1_to 
+/* ë§¤ì¶œì •ë³´ */
+DROP TABLE MY_SCHEMA.s1_to 
 	CASCADE CONSTRAINTS;
 
-/* ÁÖ¹®Á¤º¸ */
-DROP TABLE s1_od 
+/* ì£¼ë¬¸ì •ë³´ */
+DROP TABLE MY_SCHEMA.s1_od 
 	CASCADE CONSTRAINTS;
 
-/* ÁÖ¹®»óÁ¦Á¤º¸ */
-DROP TABLE s1_oddt 
+/* ì£¼ë¬¸ìƒì œì •ë³´ */
+DROP TABLE MY_SCHEMA.s1_oddt 
 	CASCADE CONSTRAINTS;
 
-/* È¸¿øÁ¤º¸ */
-DROP TABLE s2_mem 
+/* íšŒì›ì •ë³´ */
+DROP TABLE MY_SCHEMA.s2_mem 
 	CASCADE CONSTRAINTS;
 
-/* Á¤»êÇöÈ² */
-DROP TABLE s1_cal 
+/* ì •ì‚°í˜„í™© */
+DROP TABLE MY_SCHEMA.s1_cal 
 	CASCADE CONSTRAINTS;
 
-/* ÁøÇàÁÖ¹®Á¤º¸ */
-DROP TABLE s1_oding 
+/* ì§„í–‰ì£¼ë¬¸ì •ë³´ */
+DROP TABLE MY_SCHEMA.s1_oding 
 	CASCADE CONSTRAINTS;
 
-/* ¸ÀÁý */
-DROP TABLE s2_store 
+/* ë§›ì§‘ */
+DROP TABLE MY_SCHEMA.s2_store 
 	CASCADE CONSTRAINTS;
 
-/* ¸Þ´º */
-DROP TABLE s2_menu 
+/* ë©”ë‰´ */
+DROP TABLE MY_SCHEMA.s2_menu 
 	CASCADE CONSTRAINTS;
 
-/* ¸®ºä */
-DROP TABLE s2_review 
+/* ë¦¬ë·° */
+DROP TABLE MY_SCHEMA.s2_review 
 	CASCADE CONSTRAINTS;
 
-/* ¸®ºäÄÚ¸àÆ® */
-DROP TABLE s2_coment 
+/* ë¦¬ë·°ì½”ë©˜íŠ¸ */
+DROP TABLE MY_SCHEMA.s2_coment 
 	CASCADE CONSTRAINTS;
 
-/* Áö¿ª¸®½ºÆ® */
-CREATE TABLE s2_list (
-	list_no NUMBER NOT NULL, /* ¸®½ºÆ®¹øÈ£ */
-	list_name VARCHAR(60), /* ¸®½ºÆ®ÀÌ¸§ */
-	list_pic CLOB, /* Áö¿ª»çÁø */
-	zip_seq NUMBER /* ¹øÈ£ */
+/* ì§€ì—­ë¦¬ìŠ¤íŠ¸ */
+CREATE TABLE MY_SCHEMA.s2_list (
+	list_no NUMBER NOT NULL, /* ë¦¬ìŠ¤íŠ¸ë²ˆí˜¸ */
+	list_name VARCHAR(60), /* ë¦¬ìŠ¤íŠ¸ì´ë¦„ */
+	list_pic CLOB, /* ì§€ì—­ì‚¬ì§„ */
+	zip_seq NUMBER /* ë²ˆí˜¸ */
 );
 
-COMMENT ON TABLE s2_list IS 'Áö¿ª¸®½ºÆ®';
+COMMENT ON TABLE MY_SCHEMA.s2_list IS 'ì§€ì—­ë¦¬ìŠ¤íŠ¸';
 
-COMMENT ON COLUMN s2_list.list_no IS '¸®½ºÆ®¹øÈ£';
+COMMENT ON COLUMN MY_SCHEMA.s2_list.list_no IS 'ë¦¬ìŠ¤íŠ¸ë²ˆí˜¸';
 
-COMMENT ON COLUMN s2_list.list_name IS '¸®½ºÆ®ÀÌ¸§';
+COMMENT ON COLUMN MY_SCHEMA.s2_list.list_name IS 'ë¦¬ìŠ¤íŠ¸ì´ë¦„';
 
-COMMENT ON COLUMN s2_list.list_pic IS 'Áö¿ª»çÁø';
+COMMENT ON COLUMN MY_SCHEMA.s2_list.list_pic IS 'ì§€ì—­ì‚¬ì§„';
 
-COMMENT ON COLUMN s2_list.zip_seq IS '¹øÈ£';
+COMMENT ON COLUMN MY_SCHEMA.s2_list.zip_seq IS 'ë²ˆí˜¸';
 
-CREATE UNIQUE INDEX PK_s2_list
-	ON s2_list (
+CREATE UNIQUE INDEX MY_SCHEMA.PK_s2_list
+	ON MY_SCHEMA.s2_list (
 		list_no ASC
 	);
 
-ALTER TABLE s2_list
+ALTER TABLE MY_SCHEMA.s2_list
 	ADD
 		CONSTRAINT PK_s2_list
 		PRIMARY KEY (
 			list_no
 		);
 
-/* ÁÖ¼ÒÁ¤º¸ */
-CREATE TABLE s2_zipcode (
-	zip_code VARCHAR2(20), /* ¿ìÆí¹øÈ£ */
-	zip_si VARCHAR2(20) NOT NULL, /* ½Ã */
-	zip_gugun VARCHAR2(20) NOT NULL, /* ±¸±º */
-	zip_dong VARCHAR2(20) NOT NULL, /* µ¿ */
-	zip_sbunji VARCHAR2(20), /* ½ÃÀÛ¹øÁö */
-	zip_ebunji VARCHAR2(20), /* ³¡¹øÁö */
-	zip_seq NUMBER NOT NULL /* ¹øÈ£ */
+/* ì£¼ì†Œì •ë³´ */
+CREATE TABLE MY_SCHEMA.s2_zipcode (
+	zip_code VARCHAR2(20), /* ìš°íŽ¸ë²ˆí˜¸ */
+	zip_si VARCHAR2(20) NOT NULL, /* ì‹œ */
+	zip_gugun VARCHAR2(20) NOT NULL, /* êµ¬êµ° */
+	zip_dong VARCHAR2(20) NOT NULL, /* ë™ */
+	zip_sbunji VARCHAR2(20), /* ì‹œìž‘ë²ˆì§€ */
+	zip_ebunji VARCHAR2(20), /* ëë²ˆì§€ */
+	zip_seq NUMBER NOT NULL /* ë²ˆí˜¸ */
 );
 
-COMMENT ON TABLE s2_zipcode IS 'ÁÖ¼ÒÁ¤º¸';
+COMMENT ON TABLE MY_SCHEMA.s2_zipcode IS 'ì£¼ì†Œì •ë³´';
 
-COMMENT ON COLUMN s2_zipcode.zip_code IS '¿ìÆí¹øÈ£';
+COMMENT ON COLUMN MY_SCHEMA.s2_zipcode.zip_code IS 'ìš°íŽ¸ë²ˆí˜¸';
 
-COMMENT ON COLUMN s2_zipcode.zip_si IS '½Ã';
+COMMENT ON COLUMN MY_SCHEMA.s2_zipcode.zip_si IS 'ì‹œ';
 
-COMMENT ON COLUMN s2_zipcode.zip_gugun IS '±¸±º';
+COMMENT ON COLUMN MY_SCHEMA.s2_zipcode.zip_gugun IS 'êµ¬êµ°';
 
-COMMENT ON COLUMN s2_zipcode.zip_dong IS 'µ¿';
+COMMENT ON COLUMN MY_SCHEMA.s2_zipcode.zip_dong IS 'ë™';
 
-COMMENT ON COLUMN s2_zipcode.zip_sbunji IS '½ÃÀÛ¹øÁö';
+COMMENT ON COLUMN MY_SCHEMA.s2_zipcode.zip_sbunji IS 'ì‹œìž‘ë²ˆì§€';
 
-COMMENT ON COLUMN s2_zipcode.zip_ebunji IS '³¡¹øÁö';
+COMMENT ON COLUMN MY_SCHEMA.s2_zipcode.zip_ebunji IS 'ëë²ˆì§€';
 
-COMMENT ON COLUMN s2_zipcode.zip_seq IS '¹øÈ£';
+COMMENT ON COLUMN MY_SCHEMA.s2_zipcode.zip_seq IS 'ë²ˆí˜¸';
 
-CREATE UNIQUE INDEX PK_s2_zipcode
-	ON s2_zipcode (
+CREATE UNIQUE INDEX MY_SCHEMA.PK_s2_zipcode
+	ON MY_SCHEMA.s2_zipcode (
 		zip_seq ASC
 	);
 
-ALTER TABLE s2_zipcode
+ALTER TABLE MY_SCHEMA.s2_zipcode
 	ADD
 		CONSTRAINT PK_s2_zipcode
 		PRIMARY KEY (
 			zip_seq
 		);
 
-/* »óÇ°Ä«Å×°í¸® */
-CREATE TABLE s1_category (
-	cate_no NUMBER NOT NULL, /* Ä«Å×°í¸®¹øÈ£ */
-	cate_name VARCHAR2(20) NOT NULL /* Ä«Å×°í¸®¸í */
+/* ìƒí’ˆì¹´í…Œê³ ë¦¬ */
+CREATE TABLE MY_SCHEMA.s1_category (
+	cate_no NUMBER NOT NULL, /* ì¹´í…Œê³ ë¦¬ë²ˆí˜¸ */
+	cate_name VARCHAR2(20) NOT NULL /* ì¹´í…Œê³ ë¦¬ëª… */
 );
 
-COMMENT ON TABLE s1_category IS '»óÇ°Ä«Å×°í¸®';
+COMMENT ON TABLE MY_SCHEMA.s1_category IS 'ìƒí’ˆì¹´í…Œê³ ë¦¬';
 
-COMMENT ON COLUMN s1_category.cate_no IS 'Ä«Å×°í¸®¹øÈ£';
+COMMENT ON COLUMN MY_SCHEMA.s1_category.cate_no IS 'ì¹´í…Œê³ ë¦¬ë²ˆí˜¸';
 
-COMMENT ON COLUMN s1_category.cate_name IS 'Ä«Å×°í¸®¸í';
+COMMENT ON COLUMN MY_SCHEMA.s1_category.cate_name IS 'ì¹´í…Œê³ ë¦¬ëª…';
 
-CREATE UNIQUE INDEX PK_s1_category
-	ON s1_category (
+CREATE UNIQUE INDEX MY_SCHEMA.PK_s1_category
+	ON MY_SCHEMA.s1_category (
 		cate_no ASC
 	);
 
-ALTER TABLE s1_category
+ALTER TABLE MY_SCHEMA.s1_category
 	ADD
 		CONSTRAINT PK_s1_category
 		PRIMARY KEY (
 			cate_no
 		);
 
-/* »óÇ°Á¤º¸ */
-CREATE TABLE s1_pd (
-	cate_no NUMBER, /* Ä«Å×°í¸®¹øÈ£ */
-	pd_no NUMBER NOT NULL, /* »óÇ°¹øÈ£ */
-	pd_name VARCHAR2(20) NOT NULL, /* »óÇ°¸í */
-	pd_price NUMBER NOT NULL, /* »óÇ°°¡°Ý */
-	pd_img CLOB /* ÀÌ¹ÌÁö */
+/* ìƒí’ˆì •ë³´ */
+CREATE TABLE MY_SCHEMA.s1_pd (
+	cate_no NUMBER, /* ì¹´í…Œê³ ë¦¬ë²ˆí˜¸ */
+	pd_no NUMBER NOT NULL, /* ìƒí’ˆë²ˆí˜¸ */
+	pd_name VARCHAR2(20) NOT NULL, /* ìƒí’ˆëª… */
+	pd_price NUMBER NOT NULL, /* ìƒí’ˆê°€ê²© */
+	pd_img CLOB /* ì´ë¯¸ì§€ */
 );
 
-COMMENT ON TABLE s1_pd IS '»óÇ°Á¤º¸';
+COMMENT ON TABLE MY_SCHEMA.s1_pd IS 'ìƒí’ˆì •ë³´';
 
-COMMENT ON COLUMN s1_pd.cate_no IS 'Ä«Å×°í¸®¹øÈ£';
+COMMENT ON COLUMN MY_SCHEMA.s1_pd.cate_no IS 'ì¹´í…Œê³ ë¦¬ë²ˆí˜¸';
 
-COMMENT ON COLUMN s1_pd.pd_no IS '»óÇ°¹øÈ£';
+COMMENT ON COLUMN MY_SCHEMA.s1_pd.pd_no IS 'ìƒí’ˆë²ˆí˜¸';
 
-COMMENT ON COLUMN s1_pd.pd_name IS '»óÇ°¸í';
+COMMENT ON COLUMN MY_SCHEMA.s1_pd.pd_name IS 'ìƒí’ˆëª…';
 
-COMMENT ON COLUMN s1_pd.pd_price IS '»óÇ°°¡°Ý';
+COMMENT ON COLUMN MY_SCHEMA.s1_pd.pd_price IS 'ìƒí’ˆê°€ê²©';
 
-COMMENT ON COLUMN s1_pd.pd_img IS 'ÀÌ¹ÌÁö';
+COMMENT ON COLUMN MY_SCHEMA.s1_pd.pd_img IS 'ì´ë¯¸ì§€';
 
-CREATE UNIQUE INDEX PK_s1_pd
-	ON s1_pd (
+CREATE UNIQUE INDEX MY_SCHEMA.PK_s1_pd
+	ON MY_SCHEMA.s1_pd (
 		pd_no ASC
 	);
 
-ALTER TABLE s1_pd
+ALTER TABLE MY_SCHEMA.s1_pd
 	ADD
 		CONSTRAINT PK_s1_pd
 		PRIMARY KEY (
 			pd_no
 		);
 
-/* ¸ÅÃâÁ¤º¸ */
-CREATE TABLE s1_to (
-	od_number NUMBER, /* ÁÖ¹®¹øÈ£ */
-	to_total NUMBER NOT NULL, /* ÆÇ¸Å°¡°Ý */
-	to_date DATE NOT NULL, /* ÆÇ¸ÅÀÏÀÚ */
-	to_pay VARCHAR2(20) NOT NULL /* °áÁ¦¼ö´Ü */
+/* ë§¤ì¶œì •ë³´ */
+CREATE TABLE MY_SCHEMA.s1_to (
+	od_number NUMBER, /* ì£¼ë¬¸ë²ˆí˜¸ */
+	to_total NUMBER NOT NULL, /* íŒë§¤ê°€ê²© */
+	to_date DATE NOT NULL, /* íŒë§¤ì¼ìž */
+	to_pay VARCHAR2(20) NOT NULL /* ê²°ì œìˆ˜ë‹¨ */
 );
 
-COMMENT ON TABLE s1_to IS '¸ÅÃâÁ¤º¸';
+COMMENT ON TABLE MY_SCHEMA.s1_to IS 'ë§¤ì¶œì •ë³´';
 
-COMMENT ON COLUMN s1_to.od_number IS 'ÁÖ¹®¹øÈ£';
+COMMENT ON COLUMN MY_SCHEMA.s1_to.od_number IS 'ì£¼ë¬¸ë²ˆí˜¸';
 
-COMMENT ON COLUMN s1_to.to_total IS 'ÆÇ¸Å°¡°Ý';
+COMMENT ON COLUMN MY_SCHEMA.s1_to.to_total IS 'íŒë§¤ê°€ê²©';
 
-COMMENT ON COLUMN s1_to.to_date IS 'ÆÇ¸ÅÀÏÀÚ';
+COMMENT ON COLUMN MY_SCHEMA.s1_to.to_date IS 'íŒë§¤ì¼ìž';
 
-COMMENT ON COLUMN s1_to.to_pay IS '°áÁ¦¼ö´Ü';
+COMMENT ON COLUMN MY_SCHEMA.s1_to.to_pay IS 'ê²°ì œìˆ˜ë‹¨';
 
-/* ÁÖ¹®Á¤º¸ */
-CREATE TABLE s1_od (
-	od_number NUMBER NOT NULL, /* ÁÖ¹®¹øÈ£ */
-	od_total NUMBER NOT NULL, /* ÆÇ¸Å°¡°Ý */
-	od_date DATE NOT NULL /* ÁÖ¹®ÀÏÀÚ */
+/* ì£¼ë¬¸ì •ë³´ */
+CREATE TABLE MY_SCHEMA.s1_od (
+	od_number NUMBER NOT NULL, /* ì£¼ë¬¸ë²ˆí˜¸ */
+	od_total NUMBER NOT NULL, /* íŒë§¤ê°€ê²© */
+	od_date DATE NOT NULL /* ì£¼ë¬¸ì¼ìž */
 );
 
-COMMENT ON TABLE s1_od IS 'ÁÖ¹®Á¤º¸';
+COMMENT ON TABLE MY_SCHEMA.s1_od IS 'ì£¼ë¬¸ì •ë³´';
 
-COMMENT ON COLUMN s1_od.od_number IS 'ÁÖ¹®¹øÈ£';
+COMMENT ON COLUMN MY_SCHEMA.s1_od.od_number IS 'ì£¼ë¬¸ë²ˆí˜¸';
 
-COMMENT ON COLUMN s1_od.od_total IS 'ÆÇ¸Å°¡°Ý';
+COMMENT ON COLUMN MY_SCHEMA.s1_od.od_total IS 'íŒë§¤ê°€ê²©';
 
-COMMENT ON COLUMN s1_od.od_date IS 'ÁÖ¹®ÀÏÀÚ';
+COMMENT ON COLUMN MY_SCHEMA.s1_od.od_date IS 'ì£¼ë¬¸ì¼ìž';
 
-CREATE UNIQUE INDEX PK_s1_od
-	ON s1_od (
+CREATE UNIQUE INDEX MY_SCHEMA.PK_s1_od
+	ON MY_SCHEMA.s1_od (
 		od_number ASC
 	);
 
-ALTER TABLE s1_od
+ALTER TABLE MY_SCHEMA.s1_od
 	ADD
 		CONSTRAINT PK_s1_od
 		PRIMARY KEY (
 			od_number
 		);
 
-/* ÁÖ¹®»óÁ¦Á¤º¸ */
-CREATE TABLE s1_oddt (
-	od_number NUMBER NOT NULL, /* ÁÖ¹®¹øÈ£ */
-	pd_no NUMBER NOT NULL, /* »óÇ°¹øÈ£ */
-	oddt_cnt NUMBER, /* ¼ö·® */
-	oddt_io VARCHAR2(2), /* ¸ÅÀåÀÌ¿ë¿©ºÎ */
-	oddt_ice VARCHAR2(2), /* ¾óÀ½ */
-	oddt_shot VARCHAR2(2) /* ¼¦Ãß°¡ */
+/* ì£¼ë¬¸ìƒì œì •ë³´ */
+CREATE TABLE MY_SCHEMA.s1_oddt (
+	od_number NUMBER NOT NULL, /* ì£¼ë¬¸ë²ˆí˜¸ */
+	pd_no NUMBER NOT NULL, /* ìƒí’ˆë²ˆí˜¸ */
+	oddt_cnt NUMBER, /* ìˆ˜ëŸ‰ */
+	oddt_io VARCHAR2(2), /* ë§¤ìž¥ì´ìš©ì—¬ë¶€ */
+	oddt_ice VARCHAR2(2), /* ì–¼ìŒ */
+	oddt_shot VARCHAR2(2) /* ìƒ·ì¶”ê°€ */
 );
 
-COMMENT ON TABLE s1_oddt IS 'ÁÖ¹®»óÁ¦Á¤º¸';
+COMMENT ON TABLE MY_SCHEMA.s1_oddt IS 'ì£¼ë¬¸ìƒì œì •ë³´';
 
-COMMENT ON COLUMN s1_oddt.od_number IS 'ÁÖ¹®¹øÈ£';
+COMMENT ON COLUMN MY_SCHEMA.s1_oddt.od_number IS 'ì£¼ë¬¸ë²ˆí˜¸';
 
-COMMENT ON COLUMN s1_oddt.pd_no IS '»óÇ°¹øÈ£';
+COMMENT ON COLUMN MY_SCHEMA.s1_oddt.pd_no IS 'ìƒí’ˆë²ˆí˜¸';
 
-COMMENT ON COLUMN s1_oddt.oddt_cnt IS '¼ö·®';
+COMMENT ON COLUMN MY_SCHEMA.s1_oddt.oddt_cnt IS 'ìˆ˜ëŸ‰';
 
-COMMENT ON COLUMN s1_oddt.oddt_io IS '¸ÅÀåÀÌ¿ë¿©ºÎ';
+COMMENT ON COLUMN MY_SCHEMA.s1_oddt.oddt_io IS 'ë§¤ìž¥ì´ìš©ì—¬ë¶€';
 
-COMMENT ON COLUMN s1_oddt.oddt_ice IS '¾óÀ½';
+COMMENT ON COLUMN MY_SCHEMA.s1_oddt.oddt_ice IS 'ì–¼ìŒ';
 
-COMMENT ON COLUMN s1_oddt.oddt_shot IS '¼¦Ãß°¡';
+COMMENT ON COLUMN MY_SCHEMA.s1_oddt.oddt_shot IS 'ìƒ·ì¶”ê°€';
 
-/* È¸¿øÁ¤º¸ */
-CREATE TABLE s2_mem (
-	mem_no NUMBER NOT NULL, /* È¸¿ø¹øÈ£ */
-	mem_name VARCHAR2(20) NOT NULL, /* ÀÌ¸§ */
+/* íšŒì›ì •ë³´ */
+CREATE TABLE MY_SCHEMA.s2_mem (
+	mem_no NUMBER NOT NULL, /* íšŒì›ë²ˆí˜¸ */
+	mem_name VARCHAR2(20) NOT NULL, /* ì´ë¦„ */
 	mem_id VARCHAR2(20) NOT NULL, /* ID */
 	mem_pw VARCHAR2(20) NOT NULL, /* PW */
-	mem_birth VARCHAR2(20), /* »ý³â¿ùÀÏ */
-	mem_tel VARCHAR2(30), /* ÀüÈ­¹øÈ£ */
-	COL CLOB, /* ÁÖ¼Ò */
-	COL2 CLOB /* ÇÁ·ÎÇÊ»çÁø */
+	mem_birth VARCHAR2(20), /* ìƒë…„ì›”ì¼ */
+	mem_tel VARCHAR2(30), /* ì „í™”ë²ˆí˜¸ */
+	COL CLOB, /* ì£¼ì†Œ */
+	COL2 CLOB /* í”„ë¡œí•„ì‚¬ì§„ */
 );
 
-COMMENT ON TABLE s2_mem IS 'È¸¿øÁ¤º¸';
+COMMENT ON TABLE MY_SCHEMA.s2_mem IS 'íšŒì›ì •ë³´';
 
-COMMENT ON COLUMN s2_mem.mem_no IS 'È¸¿ø¹øÈ£';
+COMMENT ON COLUMN MY_SCHEMA.s2_mem.mem_no IS 'íšŒì›ë²ˆí˜¸';
 
-COMMENT ON COLUMN s2_mem.mem_name IS 'ÀÌ¸§';
+COMMENT ON COLUMN MY_SCHEMA.s2_mem.mem_name IS 'ì´ë¦„';
 
-COMMENT ON COLUMN s2_mem.mem_id IS 'ID';
+COMMENT ON COLUMN MY_SCHEMA.s2_mem.mem_id IS 'ID';
 
-COMMENT ON COLUMN s2_mem.mem_pw IS 'PW';
+COMMENT ON COLUMN MY_SCHEMA.s2_mem.mem_pw IS 'PW';
 
-COMMENT ON COLUMN s2_mem.mem_birth IS '»ý³â¿ùÀÏ';
+COMMENT ON COLUMN MY_SCHEMA.s2_mem.mem_birth IS 'ìƒë…„ì›”ì¼';
 
-COMMENT ON COLUMN s2_mem.mem_tel IS 'ÀüÈ­¹øÈ£';
+COMMENT ON COLUMN MY_SCHEMA.s2_mem.mem_tel IS 'ì „í™”ë²ˆí˜¸';
 
-COMMENT ON COLUMN s2_mem.COL IS 'ÁÖ¼Ò';
+COMMENT ON COLUMN MY_SCHEMA.s2_mem.COL IS 'ì£¼ì†Œ';
 
-COMMENT ON COLUMN s2_mem.COL2 IS 'ÇÁ·ÎÇÊ»çÁø';
+COMMENT ON COLUMN MY_SCHEMA.s2_mem.COL2 IS 'í”„ë¡œí•„ì‚¬ì§„';
 
-CREATE UNIQUE INDEX PK_s2_mem
-	ON s2_mem (
+CREATE UNIQUE INDEX MY_SCHEMA.PK_s2_mem
+	ON MY_SCHEMA.s2_mem (
 		mem_no ASC
 	);
 
-ALTER TABLE s2_mem
+ALTER TABLE MY_SCHEMA.s2_mem
 	ADD
 		CONSTRAINT PK_s2_mem
 		PRIMARY KEY (
 			mem_no
 		);
 
-/* Á¤»êÇöÈ² */
-CREATE TABLE s1_cal (
-	cal_scash NUMBER, /* °³Á¡ÁØºñ±Ý */
-	cal_ecash NUMBER, /* ¸¶°¨Çö±Ý */
-	cal_ecard NUMBER, /* ¸¶°¨Ä«µå */
-	cal_sum NUMBER, /* ´çÀÏÁ¤»ê */
-	cal_date DATE /* ¸¶°¨ÀÏ */
+/* ì •ì‚°í˜„í™© */
+CREATE TABLE MY_SCHEMA.s1_cal (
+	cal_scash NUMBER, /* ê°œì ì¤€ë¹„ê¸ˆ */
+	cal_ecash NUMBER, /* ë§ˆê°í˜„ê¸ˆ */
+	cal_ecard NUMBER, /* ë§ˆê°ì¹´ë“œ */
+	cal_sum NUMBER, /* ë‹¹ì¼ì •ì‚° */
+	cal_date DATE /* ë§ˆê°ì¼ */
 );
 
-COMMENT ON TABLE s1_cal IS 'Á¤»êÇöÈ²';
+COMMENT ON TABLE MY_SCHEMA.s1_cal IS 'ì •ì‚°í˜„í™©';
 
-COMMENT ON COLUMN s1_cal.cal_scash IS '°³Á¡ÁØºñ±Ý';
+COMMENT ON COLUMN MY_SCHEMA.s1_cal.cal_scash IS 'ê°œì ì¤€ë¹„ê¸ˆ';
 
-COMMENT ON COLUMN s1_cal.cal_ecash IS '¸¶°¨Çö±Ý';
+COMMENT ON COLUMN MY_SCHEMA.s1_cal.cal_ecash IS 'ë§ˆê°í˜„ê¸ˆ';
 
-COMMENT ON COLUMN s1_cal.cal_ecard IS '¸¶°¨Ä«µå';
+COMMENT ON COLUMN MY_SCHEMA.s1_cal.cal_ecard IS 'ë§ˆê°ì¹´ë“œ';
 
-COMMENT ON COLUMN s1_cal.cal_sum IS '´çÀÏÁ¤»ê';
+COMMENT ON COLUMN MY_SCHEMA.s1_cal.cal_sum IS 'ë‹¹ì¼ì •ì‚°';
 
-COMMENT ON COLUMN s1_cal.cal_date IS '¸¶°¨ÀÏ';
+COMMENT ON COLUMN MY_SCHEMA.s1_cal.cal_date IS 'ë§ˆê°ì¼';
 
-/* ÁøÇàÁÖ¹®Á¤º¸ */
-CREATE TABLE s1_oding (
-	od_number NUMBER /* ÁÖ¹®¹øÈ£ */
+/* ì§„í–‰ì£¼ë¬¸ì •ë³´ */
+CREATE TABLE MY_SCHEMA.s1_oding (
+	od_number NUMBER /* ì£¼ë¬¸ë²ˆí˜¸ */
 );
 
-COMMENT ON TABLE s1_oding IS 'ÁøÇàÁÖ¹®Á¤º¸';
+COMMENT ON TABLE MY_SCHEMA.s1_oding IS 'ì§„í–‰ì£¼ë¬¸ì •ë³´';
 
-COMMENT ON COLUMN s1_oding.od_number IS 'ÁÖ¹®¹øÈ£';
+COMMENT ON COLUMN MY_SCHEMA.s1_oding.od_number IS 'ì£¼ë¬¸ë²ˆí˜¸';
 
-/* ¸ÀÁý */
-CREATE TABLE s2_store (
-	st_no NUMBER NOT NULL, /* ¸ÀÁý¹øÈ£ */
-	st_name VARCHAR(30), /* ÀÌ¸§ */
-	st_add CLOB, /* ÁÖ¼Ò */
-	st_tel VARCHAR(30), /* ÀüÈ­¹øÈ£ */
-	st_kind VARCHAR(30), /* À½½ÄÁ¾·ù */
-	st_price VARCHAR(30), /* °¡°Ý´ë */
-	st_parking VARCHAR(4), /* ÁÖÂ÷ */
-	st_time VARCHAR(30), /* ¿µ¾÷½Ã°£ */
-	st_restday VARCHAR(10), /* ÈÞÀÏ */
-	st_preview CLOB, /* ½Ä´ç¼Ò°³ */
-	st_regdate DATE DEFAULT sysdate, /* µî·ÏÀÏ */
-	st_pic CLOB, /* ¸ÀÁý»çÁø */
-	list_no NUMBER /* ¸®½ºÆ®¹øÈ£ */
+/* ë§›ì§‘ */
+CREATE TABLE MY_SCHEMA.s2_store (
+	st_no NUMBER NOT NULL, /* ë§›ì§‘ë²ˆí˜¸ */
+	st_name VARCHAR(30), /* ì´ë¦„ */
+	st_add CLOB, /* ì£¼ì†Œ */
+	st_tel VARCHAR(30), /* ì „í™”ë²ˆí˜¸ */
+	st_kind VARCHAR(30), /* ìŒì‹ì¢…ë¥˜ */
+	st_price VARCHAR(30), /* ê°€ê²©ëŒ€ */
+	st_parking VARCHAR(4), /* ì£¼ì°¨ */
+	st_time VARCHAR(30), /* ì˜ì—…ì‹œê°„ */
+	st_restday VARCHAR(10), /* íœ´ì¼ */
+	st_preview CLOB, /* ì‹ë‹¹ì†Œê°œ */
+	st_regdate DATE DEFAULT sysdate, /* ë“±ë¡ì¼ */
+	st_pic CLOB, /* ë§›ì§‘ì‚¬ì§„ */
+	list_no NUMBER /* ë¦¬ìŠ¤íŠ¸ë²ˆí˜¸ */
 );
 
-COMMENT ON TABLE s2_store IS '¸ÀÁý';
+COMMENT ON TABLE MY_SCHEMA.s2_store IS 'ë§›ì§‘';
 
-COMMENT ON COLUMN s2_store.st_no IS '¸ÀÁý¹øÈ£';
+COMMENT ON COLUMN MY_SCHEMA.s2_store.st_no IS 'ë§›ì§‘ë²ˆí˜¸';
 
-COMMENT ON COLUMN s2_store.st_name IS 'ÀÌ¸§';
+COMMENT ON COLUMN MY_SCHEMA.s2_store.st_name IS 'ì´ë¦„';
 
-COMMENT ON COLUMN s2_store.st_add IS 'ÁÖ¼Ò';
+COMMENT ON COLUMN MY_SCHEMA.s2_store.st_add IS 'ì£¼ì†Œ';
 
-COMMENT ON COLUMN s2_store.st_tel IS 'ÀüÈ­¹øÈ£';
+COMMENT ON COLUMN MY_SCHEMA.s2_store.st_tel IS 'ì „í™”ë²ˆí˜¸';
 
-COMMENT ON COLUMN s2_store.st_kind IS 'À½½ÄÁ¾·ù';
+COMMENT ON COLUMN MY_SCHEMA.s2_store.st_kind IS 'ìŒì‹ì¢…ë¥˜';
 
-COMMENT ON COLUMN s2_store.st_price IS '°¡°Ý´ë';
+COMMENT ON COLUMN MY_SCHEMA.s2_store.st_price IS 'ê°€ê²©ëŒ€';
 
-COMMENT ON COLUMN s2_store.st_parking IS 'ÁÖÂ÷';
+COMMENT ON COLUMN MY_SCHEMA.s2_store.st_parking IS 'ì£¼ì°¨';
 
-COMMENT ON COLUMN s2_store.st_time IS '¿µ¾÷½Ã°£';
+COMMENT ON COLUMN MY_SCHEMA.s2_store.st_time IS 'ì˜ì—…ì‹œê°„';
 
-COMMENT ON COLUMN s2_store.st_restday IS 'ÈÞÀÏ';
+COMMENT ON COLUMN MY_SCHEMA.s2_store.st_restday IS 'íœ´ì¼';
 
-COMMENT ON COLUMN s2_store.st_preview IS '½Ä´ç¼Ò°³';
+COMMENT ON COLUMN MY_SCHEMA.s2_store.st_preview IS 'ì‹ë‹¹ì†Œê°œ';
 
-COMMENT ON COLUMN s2_store.st_regdate IS 'µî·ÏÀÏ';
+COMMENT ON COLUMN MY_SCHEMA.s2_store.st_regdate IS 'ë“±ë¡ì¼';
 
-COMMENT ON COLUMN s2_store.st_pic IS '¸ÀÁý»çÁø';
+COMMENT ON COLUMN MY_SCHEMA.s2_store.st_pic IS 'ë§›ì§‘ì‚¬ì§„';
 
-COMMENT ON COLUMN s2_store.list_no IS '¸®½ºÆ®¹øÈ£';
+COMMENT ON COLUMN MY_SCHEMA.s2_store.list_no IS 'ë¦¬ìŠ¤íŠ¸ë²ˆí˜¸';
 
-CREATE UNIQUE INDEX PK_s2_store
-	ON s2_store (
+CREATE UNIQUE INDEX MY_SCHEMA.PK_s2_store
+	ON MY_SCHEMA.s2_store (
 		st_no ASC
 	);
 
-ALTER TABLE s2_store
+ALTER TABLE MY_SCHEMA.s2_store
 	ADD
 		CONSTRAINT PK_s2_store
 		PRIMARY KEY (
 			st_no
 		);
 
-/* ¸Þ´º */
-CREATE TABLE s2_menu (
-	st_no NUMBER, /* ¸ÀÁý¹øÈ£ */
-	menu_name VARCHAR(30), /* ¸Þ´ºÀÌ¸§ */
-	menu_price NUMBER, /* °¡°Ý */
-	menu_pic CLOB /* ¸Þ´º»çÁø */
+/* ë©”ë‰´ */
+CREATE TABLE MY_SCHEMA.s2_menu (
+	st_no NUMBER, /* ë§›ì§‘ë²ˆí˜¸ */
+	menu_name VARCHAR(30), /* ë©”ë‰´ì´ë¦„ */
+	menu_price NUMBER, /* ê°€ê²© */
+	menu_pic CLOB /* ë©”ë‰´ì‚¬ì§„ */
 );
 
-COMMENT ON TABLE s2_menu IS '¸Þ´º';
+COMMENT ON TABLE MY_SCHEMA.s2_menu IS 'ë©”ë‰´';
 
-COMMENT ON COLUMN s2_menu.st_no IS '¸ÀÁý¹øÈ£';
+COMMENT ON COLUMN MY_SCHEMA.s2_menu.st_no IS 'ë§›ì§‘ë²ˆí˜¸';
 
-COMMENT ON COLUMN s2_menu.menu_name IS '¸Þ´ºÀÌ¸§';
+COMMENT ON COLUMN MY_SCHEMA.s2_menu.menu_name IS 'ë©”ë‰´ì´ë¦„';
 
-COMMENT ON COLUMN s2_menu.menu_price IS '°¡°Ý';
+COMMENT ON COLUMN MY_SCHEMA.s2_menu.menu_price IS 'ê°€ê²©';
 
-COMMENT ON COLUMN s2_menu.menu_pic IS '¸Þ´º»çÁø';
+COMMENT ON COLUMN MY_SCHEMA.s2_menu.menu_pic IS 'ë©”ë‰´ì‚¬ì§„';
 
-/* ¸®ºä */
-CREATE TABLE s2_review (
-	re_no NUMBER NOT NULL, /* ¸®ºä¹øÈ£ */
-	st_no NUMBER, /* ¸ÀÁý¹øÈ£ */
-	mem_no NUMBER, /* È¸¿ø¹øÈ£ */
-	re_review CLOB, /* ¸®ºä */
-	re_score NUMBER, /* ÆòÁ¡ */
-	re_regdate DATE DEFAULT sysdate /* µî·ÏÀÏ */
+/* ë¦¬ë·° */
+CREATE TABLE MY_SCHEMA.s2_review (
+	re_no NUMBER NOT NULL, /* ë¦¬ë·°ë²ˆí˜¸ */
+	st_no NUMBER, /* ë§›ì§‘ë²ˆí˜¸ */
+	mem_no NUMBER, /* íšŒì›ë²ˆí˜¸ */
+	re_review CLOB, /* ë¦¬ë·° */
+	re_score NUMBER, /* í‰ì  */
+	re_regdate DATE DEFAULT sysdate /* ë“±ë¡ì¼ */
 );
 
-COMMENT ON TABLE s2_review IS '¸®ºä';
+COMMENT ON TABLE MY_SCHEMA.s2_review IS 'ë¦¬ë·°';
 
-COMMENT ON COLUMN s2_review.re_no IS '¸®ºä¹øÈ£';
+COMMENT ON COLUMN MY_SCHEMA.s2_review.re_no IS 'ë¦¬ë·°ë²ˆí˜¸';
 
-COMMENT ON COLUMN s2_review.st_no IS '¸ÀÁý¹øÈ£';
+COMMENT ON COLUMN MY_SCHEMA.s2_review.st_no IS 'ë§›ì§‘ë²ˆí˜¸';
 
-COMMENT ON COLUMN s2_review.mem_no IS 'È¸¿ø¹øÈ£';
+COMMENT ON COLUMN MY_SCHEMA.s2_review.mem_no IS 'íšŒì›ë²ˆí˜¸';
 
-COMMENT ON COLUMN s2_review.re_review IS '¸®ºä';
+COMMENT ON COLUMN MY_SCHEMA.s2_review.re_review IS 'ë¦¬ë·°';
 
-COMMENT ON COLUMN s2_review.re_score IS 'ÆòÁ¡';
+COMMENT ON COLUMN MY_SCHEMA.s2_review.re_score IS 'í‰ì ';
 
-COMMENT ON COLUMN s2_review.re_regdate IS 'µî·ÏÀÏ';
+COMMENT ON COLUMN MY_SCHEMA.s2_review.re_regdate IS 'ë“±ë¡ì¼';
 
-CREATE UNIQUE INDEX PK_s2_review
-	ON s2_review (
+CREATE UNIQUE INDEX MY_SCHEMA.PK_s2_review
+	ON MY_SCHEMA.s2_review (
 		re_no ASC
 	);
 
-ALTER TABLE s2_review
+ALTER TABLE MY_SCHEMA.s2_review
 	ADD
 		CONSTRAINT PK_s2_review
 		PRIMARY KEY (
 			re_no
 		);
 
-/* ¸®ºäÄÚ¸àÆ® */
-CREATE TABLE s2_coment (
-	re_no NUMBER, /* ¸®ºä¹øÈ£ */
-	mem_no NUMBER, /* È¸¿ø¹øÈ£ */
-	co_coment CLOB, /* ÄÚ¸àÆ® */
-	co_regdate DATE DEFAULT sysdate /* µî·ÏÀÏ */
+/* ë¦¬ë·°ì½”ë©˜íŠ¸ */
+CREATE TABLE MY_SCHEMA.s2_coment (
+	re_no NUMBER, /* ë¦¬ë·°ë²ˆí˜¸ */
+	mem_no NUMBER, /* íšŒì›ë²ˆí˜¸ */
+	co_coment CLOB, /* ì½”ë©˜íŠ¸ */
+	co_regdate DATE DEFAULT sysdate /* ë“±ë¡ì¼ */
 );
 
-COMMENT ON TABLE s2_coment IS '¸®ºäÄÚ¸àÆ®';
+COMMENT ON TABLE MY_SCHEMA.s2_coment IS 'ë¦¬ë·°ì½”ë©˜íŠ¸';
 
-COMMENT ON COLUMN s2_coment.re_no IS '¸®ºä¹øÈ£';
+COMMENT ON COLUMN MY_SCHEMA.s2_coment.re_no IS 'ë¦¬ë·°ë²ˆí˜¸';
 
-COMMENT ON COLUMN s2_coment.mem_no IS 'È¸¿ø¹øÈ£';
+COMMENT ON COLUMN MY_SCHEMA.s2_coment.mem_no IS 'íšŒì›ë²ˆí˜¸';
 
-COMMENT ON COLUMN s2_coment.co_coment IS 'ÄÚ¸àÆ®';
+COMMENT ON COLUMN MY_SCHEMA.s2_coment.co_coment IS 'ì½”ë©˜íŠ¸';
 
-COMMENT ON COLUMN s2_coment.co_regdate IS 'µî·ÏÀÏ';
+COMMENT ON COLUMN MY_SCHEMA.s2_coment.co_regdate IS 'ë“±ë¡ì¼';
 
-ALTER TABLE s2_list
+ALTER TABLE MY_SCHEMA.s2_list
 	ADD
 		CONSTRAINT FK_s2_zipcode_TO_s2_list
 		FOREIGN KEY (
 			zip_seq
 		)
-		REFERENCES s2_zipcode (
+		REFERENCES MY_SCHEMA.s2_zipcode (
 			zip_seq
 		);
 
-ALTER TABLE s1_pd
+ALTER TABLE MY_SCHEMA.s1_pd
 	ADD
 		CONSTRAINT FK_s1_category_TO_s1_pd
 		FOREIGN KEY (
 			cate_no
 		)
-		REFERENCES s1_category (
+		REFERENCES MY_SCHEMA.s1_category (
 			cate_no
 		);
 
-ALTER TABLE s1_to
+ALTER TABLE MY_SCHEMA.s1_to
 	ADD
 		CONSTRAINT FK_s1_od_TO_s1_to
 		FOREIGN KEY (
 			od_number
 		)
-		REFERENCES s1_od (
+		REFERENCES MY_SCHEMA.s1_od (
 			od_number
 		)
 		ON DELETE CASCADE;
 
-ALTER TABLE s1_oddt
+ALTER TABLE MY_SCHEMA.s1_oddt
 	ADD
 		CONSTRAINT FK_s1_od_TO_s1_oddt
 		FOREIGN KEY (
 			od_number
 		)
-		REFERENCES s1_od (
+		REFERENCES MY_SCHEMA.s1_od (
 			od_number
 		)
 		ON DELETE CASCADE;
 
-ALTER TABLE s1_oddt
+ALTER TABLE MY_SCHEMA.s1_oddt
 	ADD
 		CONSTRAINT FK_s1_pd_TO_s1_oddt
 		FOREIGN KEY (
 			pd_no
 		)
-		REFERENCES s1_pd (
+		REFERENCES MY_SCHEMA.s1_pd (
 			pd_no
 		);
 
-ALTER TABLE s1_oding
+ALTER TABLE MY_SCHEMA.s1_oding
 	ADD
 		CONSTRAINT FK_s1_od_TO_s1_oding
 		FOREIGN KEY (
 			od_number
 		)
-		REFERENCES s1_od (
+		REFERENCES MY_SCHEMA.s1_od (
 			od_number
 		)
 		ON DELETE CASCADE;
 
-ALTER TABLE s2_store
+ALTER TABLE MY_SCHEMA.s2_store
 	ADD
 		CONSTRAINT FK_s2_list_TO_s2_store
 		FOREIGN KEY (
 			list_no
 		)
-		REFERENCES s2_list (
+		REFERENCES MY_SCHEMA.s2_list (
 			list_no
 		);
 
-ALTER TABLE s2_menu
+ALTER TABLE MY_SCHEMA.s2_menu
 	ADD
 		CONSTRAINT FK_s2_store_TO_s2_menu
 		FOREIGN KEY (
 			st_no
 		)
-		REFERENCES s2_store (
+		REFERENCES MY_SCHEMA.s2_store (
 			st_no
 		);
 
-ALTER TABLE s2_review
+ALTER TABLE MY_SCHEMA.s2_review
 	ADD
 		CONSTRAINT FK_s2_store_TO_s2_review
 		FOREIGN KEY (
 			st_no
 		)
-		REFERENCES s2_store (
+		REFERENCES MY_SCHEMA.s2_store (
 			st_no
 		);
 
-ALTER TABLE s2_review
+ALTER TABLE MY_SCHEMA.s2_review
 	ADD
 		CONSTRAINT FK_s2_mem_TO_s2_review
 		FOREIGN KEY (
 			mem_no
 		)
-		REFERENCES s2_mem (
+		REFERENCES MY_SCHEMA.s2_mem (
 			mem_no
 		);
 
-ALTER TABLE s2_coment
+ALTER TABLE MY_SCHEMA.s2_coment
 	ADD
 		CONSTRAINT FK_s2_review_TO_s2_coment
 		FOREIGN KEY (
 			re_no
 		)
-		REFERENCES s2_review (
+		REFERENCES MY_SCHEMA.s2_review (
 			re_no
 		);
 
-ALTER TABLE s2_coment
+ALTER TABLE MY_SCHEMA.s2_coment
 	ADD
 		CONSTRAINT FK_s2_mem_TO_s2_coment
 		FOREIGN KEY (
 			mem_no
 		)
-		REFERENCES s2_mem (
+		REFERENCES MY_SCHEMA.s2_mem (
 			mem_no
 		);
