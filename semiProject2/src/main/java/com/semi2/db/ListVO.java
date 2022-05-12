@@ -4,18 +4,18 @@ public class ListVO {
 	private int list_no;
 	private String list_name;
 	private String list_pic;
-	private int zip_seq;
+	private String list_coment;
 	
 	public ListVO() {
 		super();
 	}
 
-	public ListVO(int list_no, String list_name, String list_pic, int zip_seq) {
+	public ListVO(int list_no, String list_name, String list_pic, String list_coment) {
 		super();
 		this.list_no = list_no;
 		this.list_name = list_name;
 		this.list_pic = list_pic;
-		this.zip_seq = zip_seq;
+		this.list_coment = list_coment;
 	}
 
 	public int getList_no() {
@@ -42,13 +42,15 @@ public class ListVO {
 		this.list_pic = list_pic;
 	}
 
-	public int getZip_seq() {
-		return zip_seq;
+	public String getList_coment() {
+		return list_coment;
 	}
 
-	public void setZip_seq(int zip_seq) {
-		this.zip_seq = zip_seq;
+	public void setList_coment(String list_coment) {
+		this.list_coment = list_coment;
 	}
+
+	
 	
 	
 	
