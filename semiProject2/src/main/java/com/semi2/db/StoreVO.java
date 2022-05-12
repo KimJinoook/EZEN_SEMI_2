@@ -16,13 +16,14 @@ public class StoreVO {
 	private Timestamp regdate;
 	private String pic;
 	private int list_no;
+	private int like;
 	
 	public StoreVO() {
 		super();
 	}
 
 	public StoreVO(int no, String name, String add, String tel, String kind, String price, String parking, String time,
-			String restDay, String preview, Timestamp regdate, String pic, int list_no) {
+			String restDay, String preview, Timestamp regdate, String pic, int list_no, int like) {
 		super();
 		this.no = no;
 		this.name = name;
@@ -37,6 +38,17 @@ public class StoreVO {
 		this.regdate = regdate;
 		this.pic = pic;
 		this.list_no = list_no;
+		this.like = like;
+	}
+	
+	
+
+	public int getLike() {
+		return like;
+	}
+
+	public void setLike(int like) {
+		this.like = like;
 	}
 
 	public int getNo() {
