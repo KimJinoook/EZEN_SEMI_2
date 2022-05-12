@@ -1,5 +1,14 @@
+<%@page import="com.semi2.db.ListVO"%>
+<%@page import="java.util.List"%>
+<%@page import="com.semi2.db.ListDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%
+	ListDAO dao = new ListDAO();
+	List<ListVO> list = dao.selectListTop6(); 
+
+%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -65,88 +74,40 @@
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                 <h6 class="text-primary">맛집 리스트</h6>
-                <h1 class="mb-4">특별한 날,당신을 위한 맛집리스트</h1>
+                <h1 class="mb-4">특별한 날,당신을 위한 맛집리스트 TOP6</h1>
             </div>
             <div class="row g-4">
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+                
+                <%
+ 				for(int i=0; i<6; i++){
+                	ListVO vo = list.get(i);%>
+               	<div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item rounded overflow-hidden">
                         <img class="img-fluid" src="img/ham.jpg" alt="">
                         <div class="position-relative p-4 pt-0">
-                            <div class="service-icon">
-                                <i class="fa fa-solar-panel fa-3x"></i>
-                            </div>
-                            <h4 class="mb-3">연남동 맛집 베스트</h4>
-                            <p>"다들 이거 먹으려고 연남에서 모연남?"</p>
+                            <br><br>
+                            <h4 class="mb-3"><%=vo.getList_name() %></h4>
+                            <p><%=vo.getList_coment()%> </p>
                             <a class="small fw-medium" href="">더보기<i class="fa fa-arrow-right ms-2"></i></a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item rounded overflow-hidden">
-                        <img class="img-fluid" src="img/img-600x400-2.jpg" alt="">
-                        <div class="position-relative p-4 pt-0">
-                            <div class="service-icon">
-                                <i class="fa fa-wind fa-3x"></i>
-                            </div>
-                            <h4 class="mb-3">Wind Turbines</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                            <a class="small fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item rounded overflow-hidden">
-                        <img class="img-fluid" src="img/img-600x400-3.jpg" alt="">
-                        <div class="position-relative p-4 pt-0">
-                            <div class="service-icon">
-                                <i class="fa fa-lightbulb fa-3x"></i>
-                            </div>
-                            <h4 class="mb-3">Hydropower Plants</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                            <a class="small fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item rounded overflow-hidden">
-                        <img class="img-fluid" src="img/img-600x400-4.jpg" alt="">
-                        <div class="position-relative p-4 pt-0">
-                            <div class="service-icon">
-                                <i class="fa fa-solar-panel fa-3x"></i>
-                            </div>
-                            <h4 class="mb-3">Solar Panels</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                            <a class="small fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item rounded overflow-hidden">
-                        <img class="img-fluid" src="img/img-600x400-5.jpg" alt="">
-                        <div class="position-relative p-4 pt-0">
-                            <div class="service-icon">
-                                <i class="fa fa-wind fa-3x"></i>
-                            </div>
-                            <h4 class="mb-3">Wind Turbines</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                            <a class="small fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item rounded overflow-hidden">
-                        <img class="img-fluid" src="img/img-600x400-6.jpg" alt="">
-                        <div class="position-relative p-4 pt-0">
-                            <div class="service-icon">
-                                <i class="fa fa-lightbulb fa-3x"></i>
-                            </div>
-                            <h4 class="mb-3">Hydropower Plants</h4>
-                            <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                            <a class="small fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a>
-                        </div>
-                    </div>
-                </div>
+ 					
+ 					
+                <%}	%>
+                <br>
+               <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+			        <div class="container text-center">
+			            <div class="row justify-content-center">
+			                <div class="col-lg-6">
+			                    
+			                    <a class="btn btn-primary rounded-pill py-3 px-5" href="list_test.jsp">맛집 리스트 더보기</a>
+			                </div>
+			            </div>
+			        </div>
+			    </div>
             </div>
+             
         </div>
     </div>
     <!-- Service End -->
