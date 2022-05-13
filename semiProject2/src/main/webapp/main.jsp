@@ -120,7 +120,7 @@
 			            <div class="row justify-content-center">
 			                <div class="col-lg-6">
 			                    
-			                    <a class="btn btn-primary rounded-pill py-3 px-5" href="list_test.jsp">맛집 리스트 더보기</a>
+			                    <a class="btn btn-primary rounded-pill py-3 px-5" href="regionList.jsp">맛집 리스트 더보기</a>
 			                </div>
 			            </div>
 			        </div>
