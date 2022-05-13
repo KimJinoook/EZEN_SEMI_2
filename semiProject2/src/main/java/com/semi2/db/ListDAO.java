@@ -15,6 +15,36 @@ public class ListDAO {
 	public ListDAO() {
 		pool=ConnectionPoolMgr.getInstance();
 	}
+	public List<ListVO> selectListTop6() throws SQLException{
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<ListVO> list = new ArrayList<ListVO>();
+		
+		try {
+			con = pool.getConnection();
+			String sql = "select list_no, list_name, list_pic, list_coment, store_like, rownum from\r\n"
+					+ "(select list_no, list_name, list_pic, list_coment, (select sum(st_like) from s2_store b where a.list_no=b.list_no) as store_like from s2_list a order by store_like)\r\n"
+					+ "where rownum <= 6";
+			
+			ps=con.prepareStatement(sql);
+			
+			rs=ps.executeQuery();
+			while(rs.next()) {
+				ListVO vo = new ListVO();
+				vo.setList_no(rs.getInt(1));
+				vo.setList_name(rs.getString(2));
+				vo.setList_pic(rs.getString(3));
+				vo.setList_coment(rs.getString(4));
+				
+				list.add(vo);
+			}
+			System.out.println("list.size = "+list.size());
+			return list;
+		}finally {
+			pool.dbClose(rs, ps, con);
+		}
+	}
 	
 	public List<ListVO> selectRegion() throws SQLException{
 		Connection con=null;
