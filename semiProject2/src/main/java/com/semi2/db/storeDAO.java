@@ -8,13 +8,32 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.semi2.db.StoreVO;
-
 public class storeDAO {
 	private ConnectionPoolMgr pool;
 
 	public storeDAO() {
 		pool=new ConnectionPoolMgr();
+	}
+	public int totalStore() throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		int result = 0;
+		
+		try {
+			con = pool.getConnection();
+			String sql = "select count(*) from s2_store";
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+			return result;
+		}finally {
+			pool.dbClose(rs, ps, con);
+		}
 	}
 
 	public List<StoreVO> selectStore(String keyword) 
@@ -61,9 +80,10 @@ public class storeDAO {
 				String preview=rs.getString("st_preview");
 				Timestamp regdate=rs.getTimestamp("st_regdate");
 				String pic=rs.getString("st_pic");
+				int like = rs.getInt("st_like");
 				int list_no=rs.getInt("list_no");
 	
-				StoreVO vo = new StoreVO(no, name, add, tel, kind, price, parking, time, restday, preview, regdate, pic, list_no);
+				StoreVO vo = new StoreVO(no, name, add, tel, kind, price, parking, time, restday, preview, regdate, pic, list_no,like);
 						
 				list.add(vo);
 			}

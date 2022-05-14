@@ -7,13 +7,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.semi2.db.ConnectionPoolMgr;
-
 public class ListDAO {
 	private ConnectionPoolMgr pool;
 	
 	public ListDAO() {
-		pool=ConnectionPoolMgr.getInstance();
+		pool=new ConnectionPoolMgr();
 	}
 	public List<ListVO> selectListTop6() throws SQLException{
 		Connection con = null;
