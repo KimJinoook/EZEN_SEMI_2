@@ -1,3 +1,4 @@
+<%@page import="com.semi2.db.VisitDAO"%>
 <%@page import="com.semi2.db.ListVO"%>
 <%@page import="java.util.List"%>
 <%@page import="com.semi2.db.ListDAO"%>
@@ -7,31 +8,18 @@
 <%
 	ListDAO dao = new ListDAO();
 	List<ListVO> list = dao.selectListTop6(); 
+	VisitDAO visitDao = new VisitDAO();
+	
+	if(session.isNew()){
+		visitDao.insertVisit();
+	}
 
 %>
 <!DOCTYPE html>
 <html lang="ko">
 
 <head>
-<!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
-        <a href="main.jsp" class="navbar-brand d-flex align-items-center border-end px-4 px-lg-5">
-            <h2 class="m-0 text-primary">브랜드명</h2>
-        </a>
-        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="main.jsp" class="nav-item nav-link active">홈</a>
-                <a href="#" class="nav-item nav-link">맛집 리스트</a>
-                <a href="#" class="nav-item nav-link">맛집 후기</a>
-                <a href="#" class="nav-item nav-link">Project</a>
-            </div>
-            <a href="register.jsp" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">로그인 하기<i class="fa fa-arrow-right ms-3"></i></a>
-        </div>
-    </nav>
-<!-- Navbar End -->
+
     <meta charset="utf-8">
     <title>이젠 먹으러 갑니다</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -63,6 +51,16 @@
 </head>
 
 <body>
+	<script src="js/jquery-3.6.0.min.js"></script>
+		<script>
+			$(function(){
+				$('#searchBtn').click(function(){
+					alert('a');
+					var key = $('#keyword').val();
+					location.href="project.jsp?keyword="+key;
+				});
+			})
+	</script>
     <!-- Spinner Start -->
     <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
@@ -70,6 +68,9 @@
         </div>
     </div>
     <!-- Spinner End -->
+    <!-- Navbar Start -->
+	<%@include file="navbar.jsp"%>
+	<!-- Navbar End -->
 
 
     <!-- 상단 배너 -->
@@ -79,8 +80,8 @@
             <h1 class="display-3 text-white mb-3 animated slideInDown">이젠 먹으러 갑니다</h1>
             <br><br>
             <div class="position-relative mx-auto" style="max-width: 400px;">
-                <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="지역, 식당 또는 음식">
-                <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">검색</button>
+                <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="지역, 식당 또는 음식" name="keyword" id="keyword">
+                <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2" id="searchBtn">검색</button>
             </div>
             <br><br>
         </div>
@@ -102,12 +103,12 @@
                 	ListVO vo = list.get(i);%>
                	<div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item rounded overflow-hidden">
-                        <img class="img-fluid" src="img/ham.jpg" alt="">
+                        <img class="img-fluid" src="<%=vo.getList_pic() %>" alt="">
                         <div class="position-relative p-4 pt-0">
                             <br><br>
                             <h4 class="mb-3"><%=vo.getList_name() %></h4>
                             <p><%=vo.getList_coment()%> </p>
-                            <a class="small fw-medium" href="">더보기<i class="fa fa-arrow-right ms-2"></i></a>
+                            <a class="small fw-medium" href="project.jsp?keyword=<%=vo.getList_name()%>">더보기<i class="fa fa-arrow-right ms-2"></i></a>
                         </div>
                     </div>
                 </div>
@@ -254,77 +255,7 @@
         
 
     <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-body footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="text-white mb-4">Address</h5>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
-                    <div class="d-flex pt-2">
-                        <a class="btn btn-square btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-square btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-square btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-                        <a class="btn btn-square btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="text-white mb-4">Quick Links</h5>
-                    <a class="btn btn-link" href="">About Us</a>
-                    <a class="btn btn-link" href="">Contact Us</a>
-                    <a class="btn btn-link" href="">Our Services</a>
-                    <a class="btn btn-link" href="">Terms & Condition</a>
-                    <a class="btn btn-link" href="">Support</a>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="text-white mb-4">Project Gallery</h5>
-                    <div class="row g-2">
-                        <div class="col-4">
-                            <img class="img-fluid rounded" src="img/gallery-1.jpg" alt="">
-                        </div>
-                        <div class="col-4">
-                            <img class="img-fluid rounded" src="img/gallery-2.jpg" alt="">
-                        </div>
-                        <div class="col-4">
-                            <img class="img-fluid rounded" src="img/gallery-3.jpg" alt="">
-                        </div>
-                        <div class="col-4">
-                            <img class="img-fluid rounded" src="img/gallery-4.jpg" alt="">
-                        </div>
-                        <div class="col-4">
-                            <img class="img-fluid rounded" src="img/gallery-5.jpg" alt="">
-                        </div>
-                        <div class="col-4">
-                            <img class="img-fluid rounded" src="img/gallery-6.jpg" alt="">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="text-white mb-4">Newsletter</h5>
-                    <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
-                    <div class="position-relative mx-auto" style="max-width: 400px;">
-                        <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
-                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="copyright">
-                <div class="row">
-                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a href="#">Your Site Name</a>, All Right Reserved.
-                    </div>
-                    <div class="col-md-6 text-center text-md-end">
-                        <!--/*** This template is free as long as you keep the footer authorâs credit link/attribution link/backlink. If you'd like to use the template without the footer authorâs credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                        Designed By <a href="https://htmlcodex.com">HTML Codex</a>
-                        <br>Distributed By <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <%@include file="footer.jsp"%>
     <!-- Footer End -->
 
 
