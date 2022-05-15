@@ -6,10 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
-<link rel="stylesheet" href="register.css">
-<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="css/register.css">
+<link rel="stylesheet" href="css/style.css">
+<!-- Customized Bootstrap Stylesheet -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
 <!--autoload=false 파라미터를 이용하여 자동으로 로딩되는 것을 막습니다.-->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false"></script>
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 	$(function() {
 		$('#btnJoin').click(function() {
@@ -49,10 +52,12 @@
 		});
 		
 		$('#btnChkId').click(function(){
-			var id=$('#userid').val();
+			var id = $('#userid').val();
+			
+			console.log(id);
 						
 			window.open("checkUserid.jsp?userid="+id,"idcheck",
-				"width=400,height=350,location=yes,resizable=yes,top=100,left=50");
+				"width=450,height=200,location=yes,resizable=yes,top=100,left=50");
 		});
 		
 	});
@@ -87,7 +92,18 @@
 </head>
 <body>
 	<!-- header -->
-	<div id="header"></div>
+	<!-- Navbar Start -->
+	<%@include file="navbar.jsp"%>
+	<!-- Navbar End -->
+	<!-- 상단 배너 -->
+    <div class="container-fluid page-header py-5 mb-5">
+        <div class="container py-5">
+        	<br><br>
+            <h1 class="display-3 text-white mb-3 animated slideInDown">이젠 먹으러 갑니다</h1>
+            <br><br>
+            <br><br>
+        </div>
+    </div>
 
 	<!-- wrapper -->
 	<div id="wrapper">
@@ -101,7 +117,7 @@
 						<label for="id">아이디</label>
 					</h3>
 					<span class="box int_id">
-					<input type="text" id="userid" class="int" maxlength="20"> <span class="step_url"></span>
+					<input type="text" name="mem_id" id="userid" class="int" maxlength="20"> <span class="step_url"></span>
 					</span>
 					<input type="button" value="중복확인" id="btnChkId" title="새창열림">
 				</div>
@@ -112,7 +128,7 @@
 						<label for="pwd">비밀번호</label>
 					</h3>
 					<span class="box int_pass">
-					<input type="password" id="pwd" class="int" maxlength="20">
+					<input type="password" name="mem_pw" id="pwd" class="int" maxlength="20">
 					</span>
 				</div>
 
@@ -132,7 +148,7 @@
 						<label for="name">이름</label>
 					</h3>
 					<span class="box int_name">
-					<input type="text" id="name" class="int" maxlength="20">
+					<input type="text" name="mem_name" id="name" class="int" maxlength="20">
 					</span>
 				</div>
 
@@ -144,8 +160,9 @@
 
 					<div id="bir_wrap">
 						<!-- BIRTH -->
-							<span class="box"> <input type="text" id="birth" class="int"
-								maxlength="6" placeholder="예) 930119">
+							<span class="box">
+							<input type="text" name="mem_birth" id="birth" class="int"
+								maxlength="8" placeholder="예) 19930119">
 							</span>
 
 						</div>
@@ -156,16 +173,16 @@
 						<label for="address">주소<span class="optional"></span></label>
 					</h3>
 					<span class="box int_zipcode">
-					<input type="text" id="postcode" class="int" readonly="readonly" maxlength="100" placeholder="우편번호">
+					<input type="text" name="mem_zipcode" id="postcode" class="int" readonly="readonly" maxlength="100" placeholder="우편번호">
 					</span>
 					<span>
 						<input type="button" value="우편번호 찾기" id="btnZipcode" onclick="execDaumPostcode()" title="새창열림">
 					</span>
 					<span class="box int_address">
-					<input type="text" id="address" class="int" maxlength="100" placeholder="주소">
+					<input type="text" name="mem_add" id="address" class="int" maxlength="100" placeholder="주소">
 					</span>
 					<span class="box int_address">
-					<input type="text" id="addressDetail" class="int" maxlength="100" placeholder="상세주소">
+					<input type="text" name="mem_add2" id="addressDetail" class="int" maxlength="100" placeholder="상세주소">
 					</span>
 				</div>
 
@@ -175,7 +192,7 @@
 						<label for="phoneNo">휴대전화</label>
 					</h3>
 					<span class="box int_mobile">
-					<input type="tel" id="tel" class="int" maxlength="16" placeholder="전화번호 입력">
+					<input type="tel" name="mem_tel" id="tel" class="int" maxlength="16" placeholder="전화번호 입력">
 					</span>
 				</div>
 
