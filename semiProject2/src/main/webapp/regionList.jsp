@@ -76,7 +76,7 @@
                             </h4>
                             
                             <h4 class="mb-3"><%=vo.getList_name() %> 맛집 베스트</h4>
-                            <p><%=vo.getList_coment() %></p>
+                            <p><%=vo.getList_comment() %></p>
                             
                              <%if(vo.getList_no()==1){ %>
                             <a class="small fw-medium"  href="1종로">

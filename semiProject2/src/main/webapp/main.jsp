@@ -1,3 +1,5 @@
+<%@page import="com.semi2.db.ListGroupVO"%>
+<%@page import="com.semi2.db.ListGroupDAO"%>
 <%@page import="com.semi2.db.VisitDAO"%>
 <%@page import="com.semi2.db.ListVO"%>
 <%@page import="java.util.List"%>
@@ -8,7 +10,10 @@
 <%
 	ListDAO dao = new ListDAO();
 	List<ListVO> list = dao.selectListTop6(); 
+	List<ListVO> listList = dao.selectRegion();
 	VisitDAO visitDao = new VisitDAO();
+	ListGroupDAO groupDao = new ListGroupDAO();
+	List<ListGroupVO> groupList = groupDao.selectAll();
 	
 	if(session.isNew()){
 		visitDao.insertVisit();
@@ -89,7 +94,7 @@
     <!-- 상단 배너 끝 -->
 
 
-    <!-- 지역리스트 -->
+    <!-- 탑식스 -->
     <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
@@ -107,7 +112,7 @@
                         <div class="position-relative p-4 pt-0">
                             <br><br>
                             <h4 class="mb-3"><%=vo.getList_name() %></h4>
-                            <p><%=vo.getList_coment()%> </p>
+                            <p><%=vo.getList_comment()%> </p>
                             <a class="small fw-medium" href="project.jsp?keyword=<%=vo.getList_name()%>">더보기<i class="fa fa-arrow-right ms-2"></i></a>
                         </div>
                     </div>
@@ -130,7 +135,49 @@
              
         </div>
     </div>
-    <!-- Service End -->
+    <!-- 탑식스 -->
+    
+    
+    <!-- 리스트 그룹별 -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <h6 class="text-primary">테마별 리스트</h6>
+                <h1 class="mb-4">테마별로 모은 맛집 리스트</h1>
+            </div>
+            <div class="row mt-n2 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="col-12 text-center">
+                    <ul class="list-inline mb-5" id="portfolio-flters">
+                    	<%for(int i=0; i<groupList.size(); i++){
+                    		ListGroupVO groupVo = groupList.get(i);%>
+                        	<li class="mx-2" data-filter=".group<%=groupVo.getGroup_no()%>"><%=groupVo.getGroup_name() %></li>
+                    	<% }%>
+                    </ul>
+                </div>
+            </div>
+            <div class="row g-4 portfolio-container wow fadeInUp" data-wow-delay="0.5s">
+                <%for(int i=0; i<listList.size();i++){
+                	ListVO vo = listList.get(i);
+                %>
+                <div class="col-lg-4 col-md-6 portfolio-item group<%=vo.getGroup_no()%>">
+                    <div class="portfolio-img rounded overflow-hidden">
+                        <img class="img-fluid" src="<%=vo.getList_pic() %>" alt="">
+                        <div class="portfolio-btn">
+                            <a class="btn btn-lg-square btn-outline-light rounded-circle mx-1" href="<%=vo.getList_pic() %>" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                            <a class="btn btn-lg-square btn-outline-light rounded-circle mx-1" href=""><i class="fa fa-link"></i></a>
+                        </div>
+                    </div>
+                    <div class="pt-3">
+                        <p class="text-primary mb-0"><%=vo.getList_comment()%></p>
+                        <hr class="text-primary w-25 my-2">
+                        <h5 class="lh-base"><%=vo.getList_name() %></h5>
+                    </div>
+                </div>
+                <%}%>
+            </div>
+        </div>
+    </div>
+    <!-- 리스트 그룹별 -->
 
 
     <!-- Feature Start -->
