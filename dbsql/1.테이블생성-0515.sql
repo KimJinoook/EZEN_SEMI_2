@@ -84,57 +84,57 @@ ALTER TABLE s2_listgroup
 		CASCADE
 		KEEP INDEX;
 
-/* ¸®½ºÆ® */
+/* ë¦¬ìŠ¤íŠ¸ */
 DROP TABLE s2_list 
 	CASCADE CONSTRAINTS;
 
-/* È¸¿øÁ¤º¸ */
+/* íšŒì›ì •ë³´ */
 DROP TABLE s2_mem 
 	CASCADE CONSTRAINTS;
 
-/* ¸ÀÁý */
+/* ë§›ì§‘ */
 DROP TABLE s2_store 
 	CASCADE CONSTRAINTS;
 
-/* ¸Þ´º */
+/* ë©”ë‰´ */
 DROP TABLE s2_menu 
 	CASCADE CONSTRAINTS;
 
-/* ¸®ºä */
+/* ë¦¬ë·° */
 DROP TABLE s2_review 
 	CASCADE CONSTRAINTS;
 
-/* ÁÖ¼ÒÁ¤º¸ */
+/* ì£¼ì†Œì •ë³´ */
 DROP TABLE s2_zipcode 
 	CASCADE CONSTRAINTS;
 
-/* °¡°ÔÁÁ¾Æ¿ä */
+/* ê°€ê²Œì¢‹ì•„ìš” */
 DROP TABLE s2_storelike 
 	CASCADE CONSTRAINTS;
 
-/* ¸®ºäÁÁ¾Æ¿ä */
+/* ë¦¬ë·°ì¢‹ì•„ìš” */
 DROP TABLE s2_reviewlike 
 	CASCADE CONSTRAINTS;
 
-/* ¹æ¹®ÀÚ¼ö */
+/* ë°©ë¬¸ìžìˆ˜ */
 DROP TABLE s2_visit 
 	CASCADE CONSTRAINTS;
 
-/* ¸®½ºÆ®¿¬°á */
+/* ë¦¬ìŠ¤íŠ¸ì—°ê²° */
 DROP TABLE s2_listcon 
 	CASCADE CONSTRAINTS;
 
-/* ¸®½ºÆ®±×·ì */
+/* ë¦¬ìŠ¤íŠ¸ê·¸ë£¹ */
 DROP TABLE s2_listgroup 
 	CASCADE CONSTRAINTS;
 
-/* ¸®½ºÆ® */
+/* ë¦¬ìŠ¤íŠ¸ */
 CREATE TABLE s2_list (
-	list_no NUMBER NOT NULL, /* ¸®½ºÆ®¹øÈ£ */
-	list_name VARCHAR(60), /* ¸®½ºÆ®ÀÌ¸§ */
-	list_pic CLOB, /* Áö¿ª»çÁø */
-	list_comment CLOB, /* ÄÚ¸àÆ® */
-	group_no NUMBER /* ±×·ì¹øÈ£ */
+	list_no NUMBER NOT NULL, /* ë¦¬ìŠ¤íŠ¸ë²ˆí˜¸ */
+	list_name VARCHAR(60), /* ë¦¬ìŠ¤íŠ¸ì´ë¦„ */
+	list_pic CLOB, /* ì§€ì—­ì‚¬ì§„ */
+	list_comment CLOB, /* ì½”ë©˜íŠ¸ */
+	group_no NUMBER /* ê·¸ë£¹ë²ˆí˜¸ */
 );
 
 ALTER TABLE s2_list
@@ -144,16 +144,18 @@ ALTER TABLE s2_list
 			list_no
 		);
 
-/* È¸¿øÁ¤º¸ */
+/* íšŒì›ì •ë³´ */
 CREATE TABLE s2_mem (
-	mem_no NUMBER NOT NULL, /* È¸¿ø¹øÈ£ */
-	mem_name VARCHAR2(20) NOT NULL, /* ÀÌ¸§ */
+	mem_no NUMBER NOT NULL, /* íšŒì›ë²ˆí˜¸ */
+	mem_name VARCHAR2(20) NOT NULL, /* ì´ë¦„ */
 	mem_id VARCHAR2(20) NOT NULL, /* ID */
 	mem_pw VARCHAR2(20) NOT NULL, /* PW */
-	mem_birth VARCHAR2(20), /* »ý³â¿ùÀÏ */
-	mem_tel VARCHAR2(30), /* ÀüÈ­¹øÈ£ */
-	mem_add CLOB, /* ÁÖ¼Ò */
-	mem_pic CLOB /* ÇÁ·ÎÇÊ»çÁø */
+	mem_birth VARCHAR2(20), /* ìƒë…„ì›”ì¼ */
+	mem_tel VARCHAR2(30), /* ì „í™”ë²ˆí˜¸ */
+    mem_zipcode varchar2(20), /* ìš°íŽ¸ë²ˆí˜¸ */
+	mem_add CLOB, /* ì£¼ì†Œ */
+    mem_add2 varchar2(50), /* ìƒì„¸ì£¼ì†Œ*/
+	mem_pic CLOB /* í”„ë¡œí•„ì‚¬ì§„ */
 );
 
 ALTER TABLE s2_mem
@@ -163,22 +165,22 @@ ALTER TABLE s2_mem
 			mem_no
 		);
 
-/* ¸ÀÁý */
+/* ë§›ì§‘ */
 CREATE TABLE s2_store (
-	st_no NUMBER NOT NULL, /* ¸ÀÁý¹øÈ£ */
-	st_name VARCHAR(30), /* ÀÌ¸§ */
-	st_add CLOB, /* ÁÖ¼Ò */
-	st_tel VARCHAR(30), /* ÀüÈ­¹øÈ£ */
-	st_kind VARCHAR(30), /* À½½ÄÁ¾·ù */
-	st_price VARCHAR(30), /* °¡°Ý´ë */
-	st_parking VARCHAR(4), /* ÁÖÂ÷ */
-	st_time VARCHAR(30), /* ¿µ¾÷½Ã°£ */
-	st_restday VARCHAR(10), /* ÈÞÀÏ */
-	st_preview CLOB, /* ½Ä´ç¼Ò°³ */
-	st_regdate DATE DEFAULT sysdate, /* µî·ÏÀÏ */
-	st_pic CLOB, /* ¸ÀÁý»çÁø */
-	st_like NUMBER, /* ÁÁ¾Æ¿ä */
-	st_location VARCHAR(50) /* À§µµ°æµµ */
+	st_no NUMBER NOT NULL, /* ë§›ì§‘ë²ˆí˜¸ */
+	st_name VARCHAR(30), /* ì´ë¦„ */
+	st_add CLOB, /* ì£¼ì†Œ */
+	st_tel VARCHAR(30), /* ì „í™”ë²ˆí˜¸ */
+	st_kind VARCHAR(30), /* ìŒì‹ì¢…ë¥˜ */
+	st_price VARCHAR(30), /* ê°€ê²©ëŒ€ */
+	st_parking VARCHAR(4), /* ì£¼ì°¨ */
+	st_time VARCHAR(30), /* ì˜ì—…ì‹œê°„ */
+	st_restday VARCHAR(10), /* íœ´ì¼ */
+	st_preview CLOB, /* ì‹ë‹¹ì†Œê°œ */
+	st_regdate DATE DEFAULT sysdate, /* ë“±ë¡ì¼ */
+	st_pic CLOB, /* ë§›ì§‘ì‚¬ì§„ */
+	st_like NUMBER, /* ì¢‹ì•„ìš” */
+	st_location VARCHAR(50) /* ìœ„ë„ê²½ë„ */
 );
 
 ALTER TABLE s2_store
@@ -188,23 +190,23 @@ ALTER TABLE s2_store
 			st_no
 		);
 
-/* ¸Þ´º */
+/* ë©”ë‰´ */
 CREATE TABLE s2_menu (
-	st_no NUMBER, /* ¸ÀÁý¹øÈ£ */
-	menu_name VARCHAR(30), /* ¸Þ´ºÀÌ¸§ */
-	menu_price NUMBER, /* °¡°Ý */
-	menu_pic CLOB /* ¸Þ´º»çÁø */
+	st_no NUMBER, /* ë§›ì§‘ë²ˆí˜¸ */
+	menu_name VARCHAR(30), /* ë©”ë‰´ì´ë¦„ */
+	menu_price NUMBER, /* ê°€ê²© */
+	menu_pic CLOB /* ë©”ë‰´ì‚¬ì§„ */
 );
 
-/* ¸®ºä */
+/* ë¦¬ë·° */
 CREATE TABLE s2_review (
-	re_no NUMBER NOT NULL, /* ¸®ºä¹øÈ£ */
-	st_no NUMBER, /* ¸ÀÁý¹øÈ£ */
-	mem_no NUMBER, /* È¸¿ø¹øÈ£ */
-	re_review CLOB, /* ¸®ºä */
-	re_score NUMBER, /* ÆòÁ¡ */
-	re_regdate DATE DEFAULT sysdate, /* µî·ÏÀÏ */
-	re_like NUMBER /* ÁÁ¾Æ¿ä */
+	re_no NUMBER NOT NULL, /* ë¦¬ë·°ë²ˆí˜¸ */
+	st_no NUMBER, /* ë§›ì§‘ë²ˆí˜¸ */
+	mem_no NUMBER, /* íšŒì›ë²ˆí˜¸ */
+	re_review CLOB, /* ë¦¬ë·° */
+	re_score NUMBER, /* í‰ì  */
+	re_regdate DATE DEFAULT sysdate, /* ë“±ë¡ì¼ */
+	re_like NUMBER /* ì¢‹ì•„ìš” */
 );
 
 ALTER TABLE s2_review
@@ -214,15 +216,15 @@ ALTER TABLE s2_review
 			re_no
 		);
 
-/* ÁÖ¼ÒÁ¤º¸ */
+/* ì£¼ì†Œì •ë³´ */
 CREATE TABLE s2_zipcode (
-	zip_code VARCHAR2(20), /* ¿ìÆí¹øÈ£ */
-	zip_si VARCHAR2(20) NOT NULL, /* ½Ã */
-	zip_gugun VARCHAR2(20) NOT NULL, /* ±¸±º */
-	zip_dong VARCHAR2(20) NOT NULL, /* µ¿ */
-	zip_sbunji VARCHAR2(20), /* ½ÃÀÛ¹øÁö */
-	zip_ebunji VARCHAR2(20), /* ³¡¹øÁö */
-	zip_seq NUMBER NOT NULL /* ¹øÈ£ */
+	zip_code VARCHAR2(20), /* ìš°íŽ¸ë²ˆí˜¸ */
+	zip_si VARCHAR2(20) NOT NULL, /* ì‹œ */
+	zip_gugun VARCHAR2(20) NOT NULL, /* êµ¬êµ° */
+	zip_dong VARCHAR2(20) NOT NULL, /* ë™ */
+	zip_sbunji VARCHAR2(20), /* ì‹œìž‘ë²ˆì§€ */
+	zip_ebunji VARCHAR2(20), /* ëë²ˆì§€ */
+	zip_seq NUMBER NOT NULL /* ë²ˆí˜¸ */
 );
 
 ALTER TABLE s2_zipcode
@@ -232,33 +234,33 @@ ALTER TABLE s2_zipcode
 			zip_seq
 		);
 
-/* °¡°ÔÁÁ¾Æ¿ä */
+/* ê°€ê²Œì¢‹ì•„ìš” */
 CREATE TABLE s2_storelike (
-	mem_no NUMBER, /* È¸¿ø¹øÈ£ */
-	st_no NUMBER /* ¸ÀÁý¹øÈ£ */
+	mem_no NUMBER, /* íšŒì›ë²ˆí˜¸ */
+	st_no NUMBER /* ë§›ì§‘ë²ˆí˜¸ */
 );
 
-/* ¸®ºäÁÁ¾Æ¿ä */
+/* ë¦¬ë·°ì¢‹ì•„ìš” */
 CREATE TABLE s2_reviewlike (
-	mem_no NUMBER, /* È¸¿ø¹øÈ£ */
-	re_no NUMBER /* ¸®ºä¹øÈ£ */
+	mem_no NUMBER, /* íšŒì›ë²ˆí˜¸ */
+	re_no NUMBER /* ë¦¬ë·°ë²ˆí˜¸ */
 );
 
-/* ¹æ¹®ÀÚ¼ö */
+/* ë°©ë¬¸ìžìˆ˜ */
 CREATE TABLE s2_visit (
-	visit_date DATE /* ¹æ¹®½Ã°£ */
+	visit_date DATE /* ë°©ë¬¸ì‹œê°„ */
 );
 
-/* ¸®½ºÆ®¿¬°á */
+/* ë¦¬ìŠ¤íŠ¸ì—°ê²° */
 CREATE TABLE s2_listcon (
-	st_no NUMBER, /* ¸ÀÁý¹øÈ£ */
-	list_no NUMBER /* ¸®½ºÆ®¹øÈ£ */
+	st_no NUMBER, /* ë§›ì§‘ë²ˆí˜¸ */
+	list_no NUMBER /* ë¦¬ìŠ¤íŠ¸ë²ˆí˜¸ */
 );
 
-/* ¸®½ºÆ®±×·ì */
+/* ë¦¬ìŠ¤íŠ¸ê·¸ë£¹ */
 CREATE TABLE s2_listgroup (
-	group_no NUMBER NOT NULL, /* ±×·ì¹øÈ£ */
-	group_name VARCHAR(60) /* ±×·ìÀÌ¸§ */
+	group_no NUMBER NOT NULL, /* ê·¸ë£¹ë²ˆí˜¸ */
+	group_name VARCHAR(60) /* ê·¸ë£¹ì´ë¦„ */
 );
 
 ALTER TABLE s2_listgroup
