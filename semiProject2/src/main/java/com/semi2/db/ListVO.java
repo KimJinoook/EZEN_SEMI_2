@@ -4,18 +4,30 @@ public class ListVO {
 	private int list_no;
 	private String list_name;
 	private String list_pic;
-	private String list_coment;
+	private String list_comment;
+	private int group_no;
 	
 	public ListVO() {
 		super();
 	}
 
-	public ListVO(int list_no, String list_name, String list_pic, String list_coment) {
+	public ListVO(int list_no, String list_name, String list_pic, String list_comment, int group_no) {
 		super();
 		this.list_no = list_no;
 		this.list_name = list_name;
 		this.list_pic = list_pic;
-		this.list_coment = list_coment;
+		this.list_comment = list_comment;
+		this.group_no = group_no;
+	}
+	
+	
+
+	public int getGroup_no() {
+		return group_no;
+	}
+
+	public void setGroup_no(int group_no) {
+		this.group_no = group_no;
 	}
 
 	public int getList_no() {
@@ -42,12 +54,12 @@ public class ListVO {
 		this.list_pic = list_pic;
 	}
 
-	public String getList_coment() {
-		return list_coment;
+	public String getList_comment() {
+		return list_comment;
 	}
 
-	public void setList_coment(String list_coment) {
-		this.list_coment = list_coment;
+	public void setList_comment(String list_coment) {
+		this.list_comment = list_coment;
 	}
 
 	

@@ -81,9 +81,8 @@ public class storeDAO {
 				Timestamp regdate=rs.getTimestamp("st_regdate");
 				String pic=rs.getString("st_pic");
 				int like = rs.getInt("st_like");
-				int list_no=rs.getInt("list_no");
 	
-				StoreVO vo = new StoreVO(no, name, add, tel, kind, price, parking, time, restday, preview, regdate, pic, list_no,like);
+				StoreVO vo = new StoreVO(no, name, add, tel, kind, price, parking, time, restday, preview, regdate, pic,like);
 						
 				list.add(vo);
 			}

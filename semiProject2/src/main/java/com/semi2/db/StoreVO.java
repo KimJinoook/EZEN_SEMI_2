@@ -15,7 +15,6 @@ public class StoreVO {
 	private String preview;
 	private Timestamp regdate;
 	private String pic;
-	private int list_no;
 	private int like;
 	
 	public StoreVO() {
@@ -23,7 +22,7 @@ public class StoreVO {
 	}
 
 	public StoreVO(int no, String name, String add, String tel, String kind, String price, String parking, String time,
-			String restDay, String preview, Timestamp regdate, String pic, int list_no, int like) {
+			String restDay, String preview, Timestamp regdate, String pic, int like) {
 		super();
 		this.no = no;
 		this.name = name;
@@ -37,7 +36,6 @@ public class StoreVO {
 		this.preview = preview;
 		this.regdate = regdate;
 		this.pic = pic;
-		this.list_no = list_no;
 		this.like = like;
 	}
 	
@@ -147,13 +145,6 @@ public class StoreVO {
 		this.pic = pic;
 	}
 
-	public int getList_no() {
-		return list_no;
-	}
-
-	public void setList_no(int list_no) {
-		this.list_no = list_no;
-	}
 	
 	
 }
