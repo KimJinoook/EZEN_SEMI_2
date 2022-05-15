@@ -81,8 +81,55 @@ public class storeDAO {
 				Timestamp regdate=rs.getTimestamp("st_regdate");
 				String pic=rs.getString("st_pic");
 				int like = rs.getInt("st_like");
+				String location=rs.getString("st_location");
 	
-				StoreVO vo = new StoreVO(no, name, add, tel, kind, price, parking, time, restday, preview, regdate, pic,like);
+				StoreVO vo = new StoreVO(no, name, add, tel, kind, price, parking, time, restday, preview, regdate, pic, like, location);
+						
+				list.add(vo);
+			}
+		}finally {
+			pool.dbClose(rs, ps, con);
+		}
+		return list;
+	}
+	
+	public List<StoreVO> selectStore(int listNo) throws SQLException{
+		Connection con=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		
+		List<StoreVO> list=new ArrayList<StoreVO>();
+		try {
+			//
+			con=pool.getConnection();
+			
+			//
+			String sql=" select * from s2_store"
+			+ " where st_no in(select st_no from s2_listcon"
+			+ " where list_no in(select list_no from s2_list"
+			+ " where list_no=?))";
+			ps=con.prepareStatement(sql);
+			
+			ps.setInt(1, listNo);
+			//
+			rs=ps.executeQuery();
+			while(rs.next()) {
+				int no=rs.getInt("st_no");
+				String name=rs.getString("st_name");
+				String add=rs.getString("st_add");
+				String tel=rs.getString("st_tel");
+				String kind=rs.getString("st_kind");
+				String price=rs.getString("st_price");
+				String parking=rs.getString("st_parking");
+				String time=rs.getString("st_time");
+				String restday=rs.getString("st_restday");
+				String preview=rs.getString("st_preview");
+				Timestamp regdate=rs.getTimestamp("st_regdate");
+				String pic=rs.getString("st_pic");
+				int like = rs.getInt("st_like");
+				String location=rs.getString("st_location");
+	
+				StoreVO vo = new StoreVO(no, name, add, tel, kind, price, parking, time, restday, preview, regdate, pic, like, location);
 						
 				list.add(vo);
 			}
