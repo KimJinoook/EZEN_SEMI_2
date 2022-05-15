@@ -70,19 +70,19 @@ insert into s2_list
 values (8,'강서','img/list/8.jpg','강서 맛집 선정!',1);
 
 insert into s2_list
-values (9,'한식','img/list/1.jpg','한국인의 밥상!',2);
+values (9,'한식','img/list/9.jpg','한국인의 밥상!',2);
 
 insert into s2_list
-values (10,'중식','img/list/2.jpg','대륙의 맛!',2);
+values (10,'중식','img/list/10.jpg','대륙의 맛!',2);
 
 insert into s2_list
-values (11,'양식','img/list/3.jpg','양식!',2);
+values (11,'양식','img/list/11.jpg','양식!',2);
 
 insert into s2_list
-values (12,'일식','img/list/4.jpg','일식!',2);
+values (12,'일식','img/list/12.jpg','일식!',2);
 
 insert into s2_list
-values (13,'일식','img/list/5.jpg','동남아!',2);
+values (13,'동남아','img/list/13.jpg','동남아!',2);
 
 
 -- 가게정보
