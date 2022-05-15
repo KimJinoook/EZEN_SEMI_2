@@ -16,7 +16,27 @@ public class StoreVO {
 	private Timestamp regdate;
 	private String pic;
 	private int like;
-	
+	private String location;
+
+	public StoreVO(int no, String name, String add, String tel, String kind, String price, String parking, String time,
+			String restDay, String preview, Timestamp regdate, String pic, int like, String location) {
+		super();
+		this.no = no;
+		this.name = name;
+		this.add = add;
+		this.tel = tel;
+		this.kind = kind;
+		this.price = price;
+		this.parking = parking;
+		this.time = time;
+		this.restDay = restDay;
+		this.preview = preview;
+		this.regdate = regdate;
+		this.pic = pic;
+		this.like = like;
+		this.location = location;
+	}
+
 	public StoreVO() {
 		super();
 	}
@@ -144,7 +164,20 @@ public class StoreVO {
 	public void setPic(String pic) {
 		this.pic = pic;
 	}
-
 	
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	@Override
+	public String toString() {
+		return "StoreVO [no=" + no + ", name=" + name + ", add=" + add + ", tel=" + tel + ", kind=" + kind + ", price="
+				+ price + ", parking=" + parking + ", time=" + time + ", restDay=" + restDay + ", preview=" + preview
+				+ ", regdate=" + regdate + ", pic=" + pic + ", like=" + like + ", location=" + location + "]";
+	}
 	
 }
