@@ -14,7 +14,6 @@
 	
 	//2
 	storeDAO dao=new storeDAO();
-
 	List<StoreVO> list=new ArrayList<StoreVO>();
 	try{
 		list=dao.selectStore(keyword);	
@@ -37,7 +36,6 @@
 	int pageSize=10; 
 	int totalPage=(int)Math.ceil((float)totalRecord/pageSize);
 	int blockSize=10; 
-
 	//[2] 현재 페이지를 이용해서 계산하는 변수
 	int	firstPage=currentPage-((currentPage-1)%blockSize);
 	int lastPage=firstPage+(blockSize-1);
@@ -186,7 +184,7 @@
 		%>
 			<div class="col-lg-4 col-md-6 portfolio-item first">
 				<div class="portfolio-img rounded overflow-hidden">
-					<img class="img-fluid" src="SearchResult/<%=vo.getPic() %>" alt="">
+					<img class="img-fluid" src="<%=vo.getPic() %>" alt="">
 					<div class="portfolio-btn">
 		                <a class="btn btn-lg-square btn-outline-light rounded-circle mx-1" href="SearchResult/<%=vo.getPic() %>" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
 		                <a class="btn btn-lg-square btn-outline-light rounded-circle mx-1" href="#상세페이지"><i class="fa fa-link"></i></a>
@@ -223,94 +221,17 @@
 		    position: naver.maps.Position.TOP_RIGHT
 	   	}
 		});
-		//마음을담아내면
-		var marker = new naver.maps.Marker({
-		    position: new naver.maps.LatLng(37.57923147, 126.98207670),
+		//마커
+		<%for(int i=0;i<list.size();i++){ 
+			StoreVO vo = list.get(i);
+		%>
+			var marker = new naver.maps.Marker({
+		    position: new naver.maps.LatLng(<%=vo.getLocation()%>),
 		    map: map
 		});
-		//백세칼국수
-		var marker = new naver.maps.Marker({
-		    position: new naver.maps.LatLng(37.54812902, 126.95485277),
-		    map: map
-		});
-		
-		//황금콩밭
-		var marker = new naver.maps.Marker({
-		    position: new naver.maps.LatLng(37.55096606, 126.95673415),
-		    map: map
-		});
-		
-		//소바식당
-		var marker = new naver.maps.Marker({
-		    position: new naver.maps.LatLng(37.55514927, 126.91014977),
-		    map: map
-		});
-		
-		//칭닌
-		var marker = new naver.maps.Marker({
-		    position: new naver.maps.LatLng(37.55415059, 126.95784479),
-		    map: map
-		});
-		
-		//오레노라멘
-		var marker = new naver.maps.Marker({
-		    position: new naver.maps.LatLng(37.54747440, 126.91731983),
-		    map: map
-		});
-		
-		//이치젠 망원본점
-		var marker = new naver.maps.Marker({
-		    position: new naver.maps.LatLng(37.55665855, 126.90454806),
-		    map: map
-		});
-		
-		//목란
-		var marker = new naver.maps.Marker({
-		    position: new naver.maps.LatLng(37.56838240, 126.93047691),
-		    map: map
-		});
-		
-		//더마칸
-		var marker = new naver.maps.Marker({
-		    position: new naver.maps.LatLng(37.51323698, 127.11055330),
-		    map: map
-		});
-		
-		//창고43
-		var marker = new naver.maps.Marker({
-		    position: new naver.maps.LatLng(37.52823146, 126.87498891),
-		    map: map
-		});
-		
-		//호돈 돈까스
-		var marker = new naver.maps.Marker({
-		    position: new naver.maps.LatLng(37.51654264, 126.83869053),
-		    map: map
-		});
-		
-		//을지 장만옥
-		var marker = new naver.maps.Marker({
-		    position: new naver.maps.LatLng(37.56573559, 126.99105808),
-		    map: map
-		});
-		
-		//매덕스피자(신사점)
-		var marker = new naver.maps.Marker({
-		    position: new naver.maps.LatLng(37.51905815, 127.02378201),
-		    map: map
-		});
-		
-		//미라이
-		var marker = new naver.maps.Marker({
-		    position: new naver.maps.LatLng(37.52108310, 127.02617177),
-		    map: map
-		});
-		
-		//조연탄
-		var marker = new naver.maps.Marker({
-		    position: new naver.maps.LatLng(37.53090348, 126.86329522),
-		    map: map
-		});
+		<%
+		} //for
+		%>
 		</script>
 	</div> 
 
@@ -354,61 +275,6 @@
         </div>
     </div>
     <!-- Quote End -->
-
-
-    <!-- Testimonial Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                <h6 class="text-primary">Testimonial</h6>
-                <h1 class="mb-4">What Our Clients Say!</h1>
-            </div>
-            <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
-                <div class="testimonial-item text-center">
-                    <div class="testimonial-img position-relative">
-                        <img class="img-fluid rounded-circle mx-auto mb-5" src="img/testimonial-1.jpg">
-                        <div class="btn-square bg-primary rounded-circle">
-                            <i class="fa fa-quote-left text-white"></i>
-                        </div>
-                    </div>
-                    <div class="testimonial-text text-center rounded p-4">
-                        <p>Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea clita.</p>
-                        <h5 class="mb-1">Client Name</h5>
-                        <span class="fst-italic">Profession</span>
-                    </div>
-                </div>
-                <div class="testimonial-item text-center">
-                    <div class="testimonial-img position-relative">
-                        <img class="img-fluid rounded-circle mx-auto mb-5" src="img/testimonial-2.jpg">
-                        <div class="btn-square bg-primary rounded-circle">
-                            <i class="fa fa-quote-left text-white"></i>
-                        </div>
-                    </div>
-                    <div class="testimonial-text text-center rounded p-4">
-                        <p>Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea clita.</p>
-                        <h5 class="mb-1">Client Name</h5>
-                        <span class="fst-italic">Profession</span>
-                    </div>
-                </div>
-                <div class="testimonial-item text-center">
-                    <div class="testimonial-img position-relative">
-                        <img class="img-fluid rounded-circle mx-auto mb-5" src="img/testimonial-3.jpg">
-                        <div class="btn-square bg-primary rounded-circle">
-                            <i class="fa fa-quote-left text-white"></i>
-                        </div>
-                    </div>
-                    <div class="testimonial-text text-center rounded p-4">
-                        <p>Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea clita.</p>
-                        <h5 class="mb-1">Client Name</h5>
-                        <span class="fst-italic">Profession</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Testimonial End -->
-        
-
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-body footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container py-5">
