@@ -16,10 +16,11 @@ public class StoreVO {
 	private Timestamp regdate;
 	private String pic;
 	private int like;
-	private String location;
+	private String locationlati;
+	private String locationlongi;
 
 	public StoreVO(int no, String name, String add, String tel, String kind, String price, String parking, String time,
-			String restDay, String preview, Timestamp regdate, String pic, int like, String location) {
+			String restDay, String preview, Timestamp regdate, String pic, int like, String locationlati, String locationlongi) {
 		super();
 		this.no = no;
 		this.name = name;
@@ -34,7 +35,8 @@ public class StoreVO {
 		this.regdate = regdate;
 		this.pic = pic;
 		this.like = like;
-		this.location = location;
+		this.locationlati = locationlati;
+		this.locationlongi = locationlongi;
 	}
 
 	public StoreVO() {
@@ -165,19 +167,28 @@ public class StoreVO {
 		this.pic = pic;
 	}
 	
-	public String getLocation() {
-		return location;
+	
+	public String getLocationlati() {
+		return locationlati;
 	}
 
-	public void setLocation(String location) {
-		this.location = location;
+	public void setLocationlati(String locationlati) {
+		this.locationlati = locationlati;
+	}
+
+	public String getLocationlongi() {
+		return locationlongi;
+	}
+
+	public void setLocationlongi(String locationlongi) {
+		this.locationlongi = locationlongi;
 	}
 
 	@Override
 	public String toString() {
 		return "StoreVO [no=" + no + ", name=" + name + ", add=" + add + ", tel=" + tel + ", kind=" + kind + ", price="
 				+ price + ", parking=" + parking + ", time=" + time + ", restDay=" + restDay + ", preview=" + preview
-				+ ", regdate=" + regdate + ", pic=" + pic + ", like=" + like + ", location=" + location + "]";
+				+ ", regdate=" + regdate + ", pic=" + pic + ", like=" + like + ", location=" + locationlati+", "+locationlongi + "]";
 	}
 	
 }

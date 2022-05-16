@@ -11,6 +11,7 @@ public class MemVO {
 	private String mem_add;
 	private String mem_add2;
 	private String mem_pic;
+	private String mem_manager;
 	
 	public MemVO() {
 		super();
@@ -109,6 +110,16 @@ public class MemVO {
 
 	public void setMem_add2(String mem_add2) {
 		this.mem_add2 = mem_add2;
+	}
+
+	
+	
+	public String getMem_manager() {
+		return mem_manager;
+	}
+
+	public void setMem_manager(String mem_manager) {
+		this.mem_manager = mem_manager;
 	}
 
 	@Override
