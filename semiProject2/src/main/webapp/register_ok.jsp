@@ -12,12 +12,12 @@
 	request.setCharacterEncoding("utf-8");
 %>
 
-	<jsp:useBean id="memService" class="com.semi2.db.MemService"
-		scope="session"></jsp:useBean>
-	<jsp:useBean id="memVo" class="com.semi2.db.MemVO" scope="page"></jsp:useBean>
-	<jsp:setProperty property="*" name="memVo"/>
+<jsp:useBean id="memService" class="com.semi2.db.MemService"
+	scope="session"></jsp:useBean>
+<jsp:useBean id="memVo" class="com.semi2.db.MemVO" scope="page"></jsp:useBean>
+<jsp:setProperty property="*" name="memVo"/>
 
-<%	
+<%
 	String msg="회원가입 실패", url="register.jsp";
 	try{
 		System.out.println(memVo);

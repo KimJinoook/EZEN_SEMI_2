@@ -1,7 +1,7 @@
 <%@page import="com.semi2.db.MemVO"%>
 <%@page import="com.semi2.db.MemDAO"%>
 <%@page import="com.semi2.db.StoreVO"%>
-<%@page import="com.semi2.db.storeDAO"%>
+<%@page import="com.semi2.db.StoreDAO"%>
 <%@page import="com.semi2.db.ListVO"%>
 <%@page import="com.semi2.db.ListDAO"%>
 <%@page import="java.util.List"%>
@@ -9,16 +9,17 @@
     pageEncoding="UTF-8"%>
     
 <%
-	ListDAO listDao = new ListDAO();
-	List<ListVO> listVoList = listDao.selectRegion();
-	
-	storeDAO storeDao = new storeDAO();
-	List<StoreVO> storeVoList = storeDao.selectStore(null);
-	
-	MemDAO memDao = new MemDAO();
-	List<MemVO> memVoList = memDao.selectAll();
+    
 
-%>
+    	ListDAO listDao = new ListDAO();
+    	List<ListVO> listVoList = listDao.selectRegion();
+    	
+    	StoreDAO storeDao = new StoreDAO();
+    	List<StoreVO> storeVoList = storeDao.selectStore(null);
+    	
+    	MemDAO memDao = new MemDAO();
+    	List<MemVO> memVoList = memDao.selectAll();
+    %>
 
 <!DOCTYPE html>
 <html lang="ko">

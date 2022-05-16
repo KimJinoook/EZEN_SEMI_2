@@ -19,25 +19,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
-        <a href="main.jsp" class="navbar-brand d-flex align-items-center border-end px-4 px-lg-5">
-            <h2 class="m-0 text-primary">브랜드명</h2>
-        </a>
-        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="main.jsp" class="nav-item nav-link active">홈</a>
-                <a href="regionList.jsp" class="nav-item nav-link">맛집 리스트</a>
-                <a href="#" class="nav-item nav-link">맛집 후기</a>
-                <a href="#" class="nav-item nav-link">Project</a>
-            </div>
-            <a href="register.jsp" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">로그인 하기<i class="fa fa-arrow-right ms-3"></i></a>
-        </div>
-    </nav>
-<!-- Navbar End -->
     <meta charset="utf-8">
     <title>이젠 먹으러 갑니다</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -70,6 +51,9 @@
 <title>지역리스트</title>
 </head>
 <body>
+	<!-- Navbar Start -->
+	<%@include file="navbar.jsp"%>
+	<!-- Navbar End -->
 
     <!-- 지역리스트 -->
     <div class="container-xxl py-5">
@@ -97,7 +81,7 @@
                             <p><%=vo.getList_comment() %></p>
                           
 							<!-- 더보기 -->
-                            <a class="small fw-medium"  href="project.jsp?keyword=<%=vo.getList_name()%>">
+                            <a class="small fw-medium"  href="project.jsp?keyword=<%=vo.getList_no()%>">
                             더보기<i class="fa fa-arrow-right ms-2"></i>
                             </a>
                             <!-- 더보기 끝 -->
@@ -111,6 +95,10 @@
         </div>
     </div>
     <!-- Service End -->
+    
+    <!-- Footer Start -->
+    <%@include file="footer.jsp"%>
+    <!-- Footer End -->
 
 </body>
 </html>

@@ -1,8 +1,8 @@
+<%@page import="com.semi2.db.StoreDAO"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.semi2.db.StoreVO"%>
 <%@page import="java.util.List"%>
-<%@page import="com.semi2.db.storeDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -13,7 +13,8 @@
 	String keyword=request.getParameter("keyword");	
 	
 	//2
-	storeDAO dao=new storeDAO();
+	StoreDAO dao=new StoreDAO();
+
 	List<StoreVO> list=new ArrayList<StoreVO>();
 	try{
 		list=dao.selectStore(keyword);	
@@ -36,6 +37,7 @@
 	int pageSize=10; 
 	int totalPage=(int)Math.ceil((float)totalRecord/pageSize);
 	int blockSize=10; 
+
 	//[2] 현재 페이지를 이용해서 계산하는 변수
 	int	firstPage=currentPage-((currentPage-1)%blockSize);
 	int lastPage=firstPage+(blockSize-1);
@@ -86,71 +88,9 @@
     <!-- Spinner End -->
 
 
-    <!-- Topbar Start -->
-    <div class="container-fluid bg-dark p-0">
-        <div class="row gx-0 d-none d-lg-flex">
-            <div class="col-lg-7 px-5 text-start">
-                <div class="h-100 d-inline-flex align-items-center me-4">
-                    <small class="fa fa-map-marker-alt text-primary me-2"></small>
-                    <small>123 Street, New York, USA</small>
-                </div>
-                <div class="h-100 d-inline-flex align-items-center">
-                    <small class="far fa-clock text-primary me-2"></small>
-                    <small>Mon - Fri : 09.00 AM - 09.00 PM</small>
-                </div>
-            </div>
-            <div class="col-lg-5 px-5 text-end">
-                <div class="h-100 d-inline-flex align-items-center me-4">
-                    <small class="fa fa-phone-alt text-primary me-2"></small>
-                    <small>+012 345 6789</small>
-                </div>
-                <div class="h-100 d-inline-flex align-items-center mx-n2">
-                    <a class="btn btn-square btn-link rounded-0 border-0 border-end border-secondary" href=""><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-square btn-link rounded-0 border-0 border-end border-secondary" href=""><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-square btn-link rounded-0 border-0 border-end border-secondary" href=""><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-square btn-link rounded-0" href=""><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Topbar End -->
-
-
     <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
-    	<!-- 누르면 다시 메인화면으로 -->
-        <a href="#메인화면" class="navbar-brand d-flex align-items-center border-end px-4 px-lg-5">
-            <h2 class="m-0 text-primary">이젠 먹으러갑니다</h2>
-        </a>
-        <input type="text" 
-        		name="keyword"
-        		placeholder="지역, 식당 또는 음식"
-        		style="border: 0;float: left;"> 
-        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="index.html" class="nav-item nav-link">Home</a>
-                <a href="about.html" class="nav-item nav-link">About</a>
-                <a href="service.html" class="nav-item nav-link">Service</a>
-                <a href="project.html" class="nav-item nav-link active">Project</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                    <div class="dropdown-menu bg-light m-0">
-                        <a href="feature.html" class="dropdown-item">Feature</a>
-                        <a href="quote.html" class="dropdown-item">Free Quote</a>
-                        <a href="team.html" class="dropdown-item">Our Team</a>
-                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                        <a href="404.html" class="dropdown-item">404 Page</a>
-                    </div>
-                </div>
-                <a href="contact.html" class="nav-item nav-link">Contact</a>
-            </div>
-            <a href="" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Get A Quote<i class="fa fa-arrow-right ms-3"></i></a>
-        </div>
-    </nav>
-    <!-- Navbar End -->
+	<%@include file="navbar.jsp"%>
+	<!-- Navbar End -->
 
 
     <!-- Projects Start -->
@@ -187,7 +127,7 @@
 					<img class="img-fluid" src="<%=vo.getPic() %>" alt="">
 					<div class="portfolio-btn">
 		                <a class="btn btn-lg-square btn-outline-light rounded-circle mx-1" href="SearchResult/<%=vo.getPic() %>" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-		                <a class="btn btn-lg-square btn-outline-light rounded-circle mx-1" href="#상세페이지"><i class="fa fa-link"></i></a>
+		                <a class="btn btn-lg-square btn-outline-light rounded-circle mx-1" href="detail1.jsp?no=<%=vo.getNo()%>"><i class="fa fa-link"></i></a>
 	                </div>
 				</div>
 				<div class="pt-3">
@@ -218,20 +158,56 @@
 		   	minZoom: 7, //지도의 최소 줌 레벨
 		   	zoomControl: true, //줌 컨트롤의 표시 여부
 		   	zoomControlOptions: { //줌 컨트롤의 옵션
-		    position: naver.maps.Position.TOP_RIGHT
-	   	}
+		    	position: naver.maps.Position.TOP_RIGHT
+	   		}
 		});
+		
 		//마커
-		<%for(int i=0;i<list.size();i++){ 
-			StoreVO vo = list.get(i);
+			let markers = new Array();
+			let infoWindows = new Array();
+		<%
+			for(int i=0;i<list.size();i++){ 
+				StoreVO vo = list.get(i);
 		%>
 			var marker = new naver.maps.Marker({
-		    position: new naver.maps.LatLng(<%=vo.getLocation()%>),
-		    map: map
-		});
+			    position: new naver.maps.LatLng(<%=vo.getLocationlati()%>,<%=vo.getLocationlongi()%>),
+			    map: map
+			});
+			
+			//마커 정보
+			var infowindow = new naver.maps.InfoWindow({
+			    content: '<div style="width:300px;text-align:center;padding:10px;">'
+			    +'<h4><%=vo.getName()%></h4>'
+			    +'<p><%=vo.getAdd()%><br>'
+			    +'<%=vo.getTel()%> <br> <%=vo.getKind()%><br>'
+			    +'</p>'
+			    +'</div>'
+			});
+			markers.push(marker);
+			infoWindows.push(infowindow);
+			//클릭시 정보 뜨도록
 		<%
 		} //for
+			
 		%>
+		for (var i=0; i<markers.length; i++){
+			naver.maps.Event.addListener(markers[i], "click", markEvent(i));
+			
+		}
+		
+		function markEvent(seq){
+			return function(e){
+				var marker = markers[seq];
+				var infoWindow = infoWindows[seq];
+				
+				if(infoWindow.getMap()){
+					infoWindow.close();
+				}else{
+					infoWindow.open(map,marker);
+				}
+			}
+		}
+		
 		</script>
 	</div> 
 
@@ -276,77 +252,7 @@
     </div>
     <!-- Quote End -->
     <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-body footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="text-white mb-4">Address</h5>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
-                    <div class="d-flex pt-2">
-                        <a class="btn btn-square btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-square btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-square btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-                        <a class="btn btn-square btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="text-white mb-4">Quick Links</h5>
-                    <a class="btn btn-link" href="">About Us</a>
-                    <a class="btn btn-link" href="">Contact Us</a>
-                    <a class="btn btn-link" href="">Our Services</a>
-                    <a class="btn btn-link" href="">Terms & Condition</a>
-                    <a class="btn btn-link" href="">Support</a>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="text-white mb-4">Project Gallery</h5>
-                    <div class="row g-2">
-                        <div class="col-4">
-                            <img class="img-fluid rounded" src="img/gallery-1.jpg" alt="">
-                        </div>
-                        <div class="col-4">
-                            <img class="img-fluid rounded" src="img/gallery-2.jpg" alt="">
-                        </div>
-                        <div class="col-4">
-                            <img class="img-fluid rounded" src="img/gallery-3.jpg" alt="">
-                        </div>
-                        <div class="col-4">
-                            <img class="img-fluid rounded" src="img/gallery-4.jpg" alt="">
-                        </div>
-                        <div class="col-4">
-                            <img class="img-fluid rounded" src="img/gallery-5.jpg" alt="">
-                        </div>
-                        <div class="col-4">
-                            <img class="img-fluid rounded" src="img/gallery-6.jpg" alt="">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="text-white mb-4">Newsletter</h5>
-                    <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
-                    <div class="position-relative mx-auto" style="max-width: 400px;">
-                        <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
-                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="copyright">
-                <div class="row">
-                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a href="#">Your Site Name</a>, All Right Reserved.
-                    </div>
-                    <div class="col-md-6 text-center text-md-end">
-                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                        Designed By <a href="https://htmlcodex.com">HTML Codex</a>
-                        <br>Distributed By: <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <%@include file="footer.jsp"%>
     <!-- Footer End -->
 
 

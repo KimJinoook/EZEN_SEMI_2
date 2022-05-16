@@ -1,5 +1,26 @@
+<%@page import="java.sql.SQLException"%>
+<%@page import="com.semi2.db.MemVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<jsp:useBean id="memService" class="com.semi2.db.MemService" scope="session"></jsp:useBean>
+<%
+	String userid=(String)session.getAttribute("userid");
+
+	MemVO vo=null;
+	try{
+		vo=memService.selectByUserid(userid);		
+	}catch(SQLException e){
+		e.printStackTrace();
+	}
+	
+	String zipcode=vo.getMem_zipcode();
+	String add=vo.getMem_add();
+	String add2=vo.getMem_add2();
+	
+	if(zipcode==null) zipcode="";
+	if(add==null) add="";
+	if(add2==null) add2="";
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -98,7 +119,10 @@
 	<!-- 상단 배너 -->
     <div class="container-fluid page-header py-5 mb-5">
         <div class="container py-5">
+        	<br><br>
             <h1 class="display-3 text-white mb-3 animated slideInDown">이젠 먹으러 갑니다</h1>
+            <br><br>
+            <br><br>
         </div>
     </div>
 
@@ -107,16 +131,15 @@
 
 		<!-- content-->
 		<div id="content">
-			<form name="frm1" method="post" action="register_ok.jsp">
+			<form name="frm1" method="post" action="memEdit_ok.jsp">
 				<!-- ID -->
 				<div>
 					<h3 class="join_title">
 						<label for="id">아이디</label>
 					</h3>
 					<span class="box int_id">
-					<input type="text" name="mem_id" id="userid" class="int" maxlength="20"> <span class="step_url"></span>
+					<%=userid %>
 					</span>
-					<input type="button" value="중복확인" id="btnChkId" title="새창열림">
 				</div>
 
 				<!-- PW1 -->
@@ -145,7 +168,7 @@
 						<label for="name">이름</label>
 					</h3>
 					<span class="box int_name">
-					<input type="text" name="mem_name" id="name" class="int" maxlength="20">
+					<%=vo.getMem_name() %>
 					</span>
 				</div>
 
@@ -159,7 +182,7 @@
 						<!-- BIRTH -->
 							<span class="box">
 							<input type="text" name="mem_birth" id="birth" class="int"
-								maxlength="8" placeholder="예) 19930119">
+								maxlength="8" placeholder="예) 19930119" value="<%=vo.getMem_birth()%>">
 							</span>
 
 						</div>
@@ -170,16 +193,19 @@
 						<label for="address">주소<span class="optional"></span></label>
 					</h3>
 					<span class="box int_zipcode">
-					<input type="text" name="mem_zipcode" id="postcode" class="int" readonly="readonly" maxlength="100" placeholder="우편번호">
+					<input type="text" name="mem_zipcode" id="postcode" class="int" readonly="readonly" maxlength="100" placeholder="우편번호"
+						value="<%=zipcode%>">
 					</span>
 					<span>
 						<input type="button" value="우편번호 찾기" id="btnZipcode" onclick="execDaumPostcode()" title="새창열림">
 					</span>
 					<span class="box int_address">
-					<input type="text" name="mem_add" id="address" class="int" maxlength="100" placeholder="주소">
+					<input type="text" name="mem_add" id="address" class="int" maxlength="100" placeholder="주소"
+						value="<%=add%>">
 					</span>
 					<span class="box int_address">
-					<input type="text" name="mem_add2" id="addressDetail" class="int" maxlength="100" placeholder="상세주소">
+					<input type="text" name="mem_add2" id="addressDetail" class="int" maxlength="100" placeholder="상세주소"
+						value="<%=add2%>">
 					</span>
 				</div>
 
@@ -189,15 +215,15 @@
 						<label for="phoneNo">휴대전화</label>
 					</h3>
 					<span class="box int_mobile">
-					<input type="tel" name="mem_tel" id="tel" class="int" maxlength="11" placeholder="'-'를 제외한 전화번호 입력">
+					<input type="tel" name="mem_tel" id="tel" class="int" maxlength="16" placeholder="전화번호 입력"
+						value="<%=vo.getMem_tel()%>">
 					</span>
 				</div>
 
 				<!-- JOIN BTN-->
 				<div class="btn_area">
-					<input type="submit" id="btnJoin" value="가입하기">
+					<input type="submit" id="btnJoin" value="수정하기">
 				</div>
-				<input type ="text" name="chkId" id="chkId">
 			</form>
 
 		</div>

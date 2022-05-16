@@ -28,7 +28,7 @@
 </script>
 </head>
 <body>
-<form action="main.jsp" method="post">
+<form name="frmLogin" action="login_ok.jsp" method="post">
 <!-- Navbar Start -->
 	<%@include file="navbar.jsp"%>
 	<!-- Navbar End -->
@@ -36,10 +36,7 @@
     <!-- 상단 배너 -->
     <div class="container-fluid page-header py-5 mb-5">
         <div class="container py-5">
-        	<br><br>
             <h1 class="display-3 text-white mb-3 animated slideInDown">이젠 먹으러 갑니다</h1>
-            <br><br>
-            <br><br>
         </div>
     </div>
     <!-- 상단 배너 끝 -->
@@ -51,7 +48,7 @@
 		<label for="id">아이디</label>
 		</h3>
 		<span class="box int_id">
-		<input type="text" id="userid" class="int" maxlength="20">
+		<input type="text" id="userid" name="userid" class="int" maxlength="20">
 		</span>
 	</div>
 	<!-- PW1 -->
@@ -60,7 +57,7 @@
 		<label for="pwd">비밀번호</label>
 		</h3>
 		<span class="box int_pass">
-		<input type="password" id="pwd" class="int" maxlength="20">
+		<input type="password" id="pwd" name="pwd" class="int" maxlength="20">
 		</span>
 	</div>
 	<!-- JOIN BTN-->

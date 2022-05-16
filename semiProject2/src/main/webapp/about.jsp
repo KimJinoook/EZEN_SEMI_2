@@ -1,24 +1,25 @@
 <%@page import="com.semi2.db.VisitDAO"%>
 <%@page import="com.semi2.db.ReviewDAO"%>
 <%@page import="com.semi2.db.MemDAO"%>
-<%@page import="com.semi2.db.storeDAO"%>
+<%@page import="com.semi2.db.StoreDAO"%>
 <%@page import="com.semi2.db.StoreVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
 <%
-	storeDAO storeDao = new storeDAO();
-	int totalStore = storeDao.totalStore();
-	
-	MemDAO memDao = new MemDAO();
-	int totalMem = memDao.totalMem();
-	
-	ReviewDAO reviewDao = new ReviewDAO();
-	int totalReview = reviewDao.totalReview();
-	
-	VisitDAO visitDao = new VisitDAO();
-	int totalVisit = visitDao.totalVisit();
-%>
+
+    	StoreDAO storeDao = new StoreDAO();
+    	int totalStore = storeDao.totalStore();
+    	
+    	MemDAO memDao = new MemDAO();
+    	int totalMem = memDao.totalMem();
+    	
+    	ReviewDAO reviewDao = new ReviewDAO();
+    	int totalReview = reviewDao.totalReview();
+    	
+    	VisitDAO visitDao = new VisitDAO();
+    	int totalVisit = visitDao.totalVisit();
+    %>
 <!DOCTYPE html>
 <html lang="ko">
 

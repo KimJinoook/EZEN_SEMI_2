@@ -60,7 +60,6 @@
 		<script>
 			$(function(){
 				$('#searchBtn').click(function(){
-					alert('a');
 					var key = $('#keyword').val();
 					location.href="project.jsp?keyword="+key;
 				});
@@ -73,6 +72,7 @@
         </div>
     </div>
     <!-- Spinner End -->
+    
     <!-- Navbar Start -->
 	<%@include file="navbar.jsp"%>
 	<!-- Navbar End -->
