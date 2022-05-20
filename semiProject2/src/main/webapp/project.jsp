@@ -1,3 +1,4 @@
+<%@page import="com.semi2.db.PagingVO"%>
 <%@page import="com.semi2.db.StoreDAO"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="java.util.ArrayList"%>
@@ -14,8 +15,8 @@
 	
 	//2
 	StoreDAO dao=new StoreDAO();
-
-	List<StoreVO> list=new ArrayList<StoreVO>();
+	StoreVO vo=null;
+	List<StoreVO> list=null;
 	try{
 		list=dao.selectStore(keyword);	
 	}catch(SQLException e){
@@ -26,24 +27,17 @@
 	if(keyword==null) keyword="";
 	
 	//페이징 처리
-	int currentPage=1;  //현재 페이지
-	
+	int currentPage=1;
+
 	if(request.getParameter("currentPage")!=null){
 		currentPage=Integer.parseInt((request.getParameter("currentPage")));
 	}
 	
-	//[1] 현재 페이지와 무관한 변수
-	int totalRecord=list.size();
-	int pageSize=10; 
-	int totalPage=(int)Math.ceil((float)totalRecord/pageSize);
+	int totalRecord=list.size(); 
+	int pageSize=3;
 	int blockSize=10; 
 
-	//[2] 현재 페이지를 이용해서 계산하는 변수
-	int	firstPage=currentPage-((currentPage-1)%blockSize);
-	int lastPage=firstPage+(blockSize-1);
-	
-	int curPos=(currentPage-1)*pageSize;
-	int num=totalRecord-curPos;
+	PagingVO pageVo=new PagingVO(currentPage, totalRecord, pageSize, blockSize);
 %>    
 
 <!DOCTYPE html>
@@ -100,51 +94,73 @@
             	<!-- 검색어 출력 -->
                 <h1 class="mb-4"><%=keyword%> 맛집 인기 검색순위</h1>
             </div>
-            <div class="row mt-n2 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="col-12 text-center">
-                    <ul class="list-inline mb-5" id="portfolio-flters">
-                        <li class="mx-2 active" data-filter="*">All</li>
-                        <li class="mx-2" data-filter=".first">Solar Panels</li>
-                        <li class="mx-2" data-filter=".second">Wind Turbines</li>
-                        <li class="mx-2" data-filter=".third">Hydropower Plants</li>
-                    </ul>
-                </div>
-            </div>
-            
-          
-    <%if(list.isEmpty()){ %>
-		<script type="text/javascript">
-			alert ("검색 결과가 존재하지 않습니다"); 
-		</script>
-	<%}else{ %>
+         <%
+         	int num =pageVo.getNum();
+   	  		int curPos =pageVo.getCurPos();
+         %>   
+  
 		<%for(int i=0;i<pageSize;i++){ 
 			if(num-- <1) break;
-				  	
-			StoreVO vo = list.get(curPos++);
+			vo = list.get(curPos++);
 		%>
-			<div class="col-lg-4 col-md-6 portfolio-item first">
-				<div class="portfolio-img rounded overflow-hidden">
-					<img class="img-fluid" src="<%=vo.getPic() %>" alt="">
-					<div class="portfolio-btn">
-		                <a class="btn btn-lg-square btn-outline-light rounded-circle mx-1" href="SearchResult/<%=vo.getPic() %>" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-		                <a class="btn btn-lg-square btn-outline-light rounded-circle mx-1" href="detail1.jsp?no=<%=vo.getNo()%>"><i class="fa fa-link"></i></a>
-	                </div>
-				</div>
-				<div class="pt-3">
-					<hr class="text-primary w-25 my-2">
-					<a href="#">
-					<h5 class="lh-base"><%=vo.getName() %></h5>
-					</a>
+			 <div class="row g-4 portfolio-container wow fadeInUp" data-wow-delay="0.5s">
+				<div class="col-lg-4 col-md-6 portfolio-item first">
+					<div class="portfolio-img rounded overflow-hidden">
+						<img class="img-fluid" src="<%=vo.getPic() %>" alt="">
+						<div class="portfolio-btn">
+			                <a class="btn btn-lg-square btn-outline-light rounded-circle mx-1" href="<%=vo.getPic() %>" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+			                <a class="btn btn-lg-square btn-outline-light rounded-circle mx-1" href="detail1.jsp?no=<%=vo.getNo()%>"><i class="fa fa-link"></i></a>
+		                </div>
+					</div>
+					<div class="pt-3">
+						<hr class="text-primary w-25 my-2">
+						<h5 class="lh-base"><%=vo.getName() %></h5>
+					</div>
 				</div>
 			</div>
-		<%
-		} //for
-		%>
-	<%
-	} //if
-	%>
+			
+			<%
+			} //for
+			%>
+	    </div>
     </div>
+    <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+    
+    <div class="divPage">
+		<!-- 이전블럭 이동 -->
+		<%
+			if(pageVo.getFirstPage()>1){ %>
+				<a href='list.jsp?currentPage=<%=pageVo.getFirstPage()-1%>&keyword=<%=keyword%>'>
+					<img src='img/first.JPG'>
+				</a>	
+		<%	} %>
+	
+		<!-- 번호 추가 -->						
+		<%
+			for(int i=pageVo.getFirstPage();i<=pageVo.getLastPage();i++){
+				if(i>pageVo.getTotalPage()) break;  
+				
+				if(i==currentPage){	%>
+					<span style=";font-weight: bold;font-size: 2em;">
+						<%=i %></span>
+				<%}else{ %>
+					<a href ='project.jsp?currentPage=<%=i%>&keyword=<%=keyword%>'>
+						[<%=i %>]</a>
+				<%} %>		
+		<%	} %>
+		<!--  번호 끝 -->
+		
+		<!-- 다음 블럭 이동 -->
+		<%
+			if(pageVo.getLastPage() < pageVo.getTotalPage()){ %>
+				<a href ='project.jsp?currentPage=<%=pageVo.getLastPage()+1%>&keyword=<%=keyword%>'>
+					<img src='img/last.JPG'>
+				</a>	
+		<%	} %>
+	</div>
+	</div>
     <!-- Projects End -->
+    
 	<script type="text/javascript"
 		src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=9p1sal6bpb"></script>
     <div class="container-fluid bg-light overflow-hidden my-5 px-lg-0">
@@ -152,8 +168,8 @@
 		<script>
 		//지도 생성 시에 옵션을 지정할 수 있습니다.
 		var map = new naver.maps.Map('map', {
-			//지도의 초기 중심 좌표 - 서울역
-		   	center: new naver.maps.LatLng(37.55467884, 126.97060692), 
+			//지도의 초기 중심 좌표
+		   	center: new naver.maps.LatLng(<%=vo.getLocationlati()%>,<%=vo.getLocationlongi()%>), 
 		   	zoom: 13, //지도의 초기 줌 레벨
 		   	minZoom: 7, //지도의 최소 줌 레벨
 		   	zoomControl: true, //줌 컨트롤의 표시 여부
@@ -162,13 +178,18 @@
 	   		}
 		});
 		
+	    <!-- 미완성 페이지 사이즈에 맞게 마커 출력 -->
 		//마커
-			let markers = new Array();
-			let infoWindows = new Array();
+		let markers = new Array();
+		let infoWindows = new Array();
 		<%
-			for(int i=0;i<list.size();i++){ 
-				StoreVO vo = list.get(i);
-		%>
+			int marknum =pageVo.getNum();
+	  		int markcurPos =pageVo.getCurPos();
+	  		
+			for(int i=0;i<pageSize;i++){ 
+				if(marknum-- <1) break;
+				vo = list.get(markcurPos++);
+		%>	
 			var marker = new naver.maps.Marker({
 			    position: new naver.maps.LatLng(<%=vo.getLocationlati()%>,<%=vo.getLocationlongi()%>),
 			    map: map
@@ -182,14 +203,14 @@
 			    +'<%=vo.getTel()%> <br> <%=vo.getKind()%><br>'
 			    +'</p>'
 			    +'</div>'
-			});
+			});	
+			
 			markers.push(marker);
 			infoWindows.push(infowindow);
-			//클릭시 정보 뜨도록
-		<%
-		} //for
-			
-		%>
+		<%}%> //for
+		
+		
+		
 		for (var i=0; i<markers.length; i++){
 			naver.maps.Event.addListener(markers[i], "click", markEvent(i));
 			
@@ -210,47 +231,6 @@
 		
 		</script>
 	</div> 
-
-    <!-- Quote Start -->
-
-                <div class="col-lg-6 quote-text py-5 wow fadeIn" data-wow-delay="0.5s">
-                    <div class="p-lg-5 pe-lg-0">
-                        <h6 class="text-primary">Free Quote</h6>
-                        <h1 class="mb-4">Get A Free Quote</h1>
-                        <p class="mb-4 pb-2">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo erat amet</p>
-                        <form>
-                            <div class="row g-3">
-                                <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control border-0" placeholder="Your Name" style="height: 55px;">
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <input type="email" class="form-control border-0" placeholder="Your Email" style="height: 55px;">
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control border-0" placeholder="Your Mobile" style="height: 55px;">
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <select class="form-select border-0" style="height: 55px;">
-                                        <option selected>Select A Service</option>
-                                        <option value="1">Service 1</option>
-                                        <option value="2">Service 2</option>
-                                        <option value="3">Service 3</option>
-                                    </select>
-                                </div>
-                                <div class="col-12">
-                                    <textarea class="form-control border-0" placeholder="Special Note"></textarea>
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn btn-primary rounded-pill py-3 px-5" type="submit">Submit</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Quote End -->
     <!-- Footer Start -->
     <%@include file="footer.jsp"%>
     <!-- Footer End -->
