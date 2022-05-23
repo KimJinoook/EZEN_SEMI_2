@@ -35,12 +35,10 @@ $(function(){
 	});	
 	
 	$('#openBroad').click(function(){
-		alert('a');
 		if(!<%=m_login%>){
 			alert('로그인이 필요한 서비스 입니다.');
 			location.href="<%=request.getContextPath()%>/login.do";
 		}else if(<%=m_login%>){
-			alert('로그인확인');
 			window.open("<%=request.getContextPath()%>/broadcast.do","맛객채팅",
 			"width=640,height=720,location=no,resizable=no,top=100,left=50");
 		}
