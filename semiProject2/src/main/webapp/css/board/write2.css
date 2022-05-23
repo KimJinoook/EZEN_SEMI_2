@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+.divForm .center	{
+		left: 213px;border: none;
+		text-align: center;
+		margin:10px 0;
+		position: relative;}
+
+
+input#btSubmit {/* border: 1px solid black; */}
+
+input#btSubmit {position: relative;float: left;margin-right: 16px;height: -9em;}
+
+input#btList {/* margin-right: 10px; */}
+
+.divForm legend	{
+		font-weight: bold;
+		color: #555555; /* #7AA3EB; */
+		padding: 10px 0;
+		margin:10px 0;
+		font-size: 2.3em;
+		}
+		
+input#title {width: 89%;margin-top: 5px;}
+
+a {
+	  text-decoration-line: none;
+	}
