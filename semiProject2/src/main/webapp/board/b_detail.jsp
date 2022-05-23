@@ -70,7 +70,7 @@
     
 <link rel="stylesheet" type="text/css" href="../css/board/mainstyle.css" />
 <link rel="stylesheet" type="text/css" href="../css/board/clear.css" />
-<link rel="stylesheet" type="text/css" href="../css/board/formLayout2.css" />
+<link rel="stylesheet" type="text/css" href="../css/board/formLayout4.css" />
 <link rel="stylesheet" type="text/css" href="../css/board/mystyle.css" />
 <!-- Customized Bootstrap Stylesheet -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -147,7 +147,7 @@
 		}); 
 		
 		//댓글삭제
-		 $('#td_del').click(function(){
+		 $('td > input[type="button"]').click(function(){
 		 		if($('#id').val() =="null" && $('#pwd').val() =="null"){
 		 			alert('로그인이 필요합니다.');
 		 			event.preventDefault();
@@ -167,15 +167,7 @@
 
 	});
 </script>
-<style type="text/css">
-	body{
-		padding:5px;
-		margin:5px;
-	 }
-	.divForm {
-		width: 700px;
-		}
-</style>  
+
 </head>
 <body>
 <!-- Navbar Start -->
@@ -213,11 +205,7 @@
 			<div class="ctb">
 				<table id="comentTb" border="1px soild black">
 					<tbody>
-					<%if(list.isEmpty()) {%>
-						<tr>
-							<td colspan="3"></td>
-						</tr>
-					<%}else{%>
+
 					<!-- 댓글 내용 반복문 시작 -->
 						<%for(int i=0; i<list.size(); i++) {
 							CommentVO commentVo = null;
@@ -228,15 +216,15 @@
 							<input type="hidden" id="c_id" value="<%=commentVo.getId() %>">
 							<input type="hidden" id="c_no" value="<%=commentVo.getNo() %>">
 							</div>					
-							<tr>
-							<td><%=commentVo.getId() %></td>
-							<td><%=commentVo.getContent() %></td>
-							<td><%=sdf.format(commentVo.getRegdate())%></td>
-							<td><input type="button" id="td_del" value="x"></td>
+							<tr style="line-height: 0.2">
+							<td class="writer"><%=commentVo.getId() %></td>
+							<td class="content"><%=commentVo.getContent() %></td>
+							<td class="date"><%=sdf.format(commentVo.getRegdate())%></td>
+							<td class="btnX"><input type="button" value="x"></td>
 							</tr>
 						<%}//for %>
 					<!-- 반복 끝 -->
-					<%}//if %>
+				
 				</tbody>
 			</table>
 		</div>

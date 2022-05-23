@@ -149,7 +149,7 @@
 		</colgroup>
 	
 		<thead>
-			<tr>
+			<tr style="text-align:center">
 				<th scope="col">번호</th>
 				<th scope="col">제목</th>
 				<th scope="col">작성자</th>
