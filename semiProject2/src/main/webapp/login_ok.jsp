@@ -30,6 +30,7 @@
 			session.setAttribute("curMemVo", vo);
 			session.setAttribute("userpwd", vo.getMem_pw());
 			session.setAttribute("manager", vo.getMem_manager());
+			session.setAttribute("loginType","ezen");
 			
 			msg=vo.getMem_name()+"님 로그인 되셨습니다.";
 			url="main.do";

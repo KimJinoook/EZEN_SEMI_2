@@ -138,6 +138,9 @@
                                 </div>
                                 
                                 <div class="col-12 col-sm-6">
+                                    <input type="text" class="form-control border-0" name = "tel" placeholder="전화번호" style="height: 55px;" id="inputlistname">
+                                </div>
+                                <div class="col-12 col-sm-6">
                                     <input type="text" class="form-control border-0" name = "kind" placeholder="종류" style="height: 55px;" id="inputlistname">
                                 </div>
                                 

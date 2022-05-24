@@ -58,6 +58,7 @@
 	storeVo.setLocationlongi(mr.getParameter("locationlongi"));
 	storeVo.setName(mr.getParameter("name"));
 	String parking = mr.getParameter("parking");
+	storeVo.setTel(mr.getParameter("tel"));
 	if(parking.equals("주차 가능 여부")){
 		parking="";
 	}

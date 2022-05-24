@@ -44,6 +44,7 @@
 	String time = mr.getParameter("time");
 	String restday = mr.getParameter("restday");
 	String parking = mr.getParameter("parking");
+	String tel = mr.getParameter("tel");
 	if(parking.equals("주차 가능 여부")){
 		parking="";
 	}
@@ -63,6 +64,7 @@
 	storeVo.setRestDay(restday);
 	storeVo.setParking(parking);
 	storeVo.setPic(pic);
+	storeVo.setTel(tel);
 	
 	StoreService storeService = new StoreService();
 	int cnt = storeService.insertStore(storeVo);

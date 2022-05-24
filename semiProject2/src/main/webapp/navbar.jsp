@@ -23,8 +23,10 @@
 		
 	}
 	String curPage = request.getServletPath();
+	String loginType = (String)session.getAttribute("loginType");
 %>
 <script src="<%=request.getContextPath()%>/js/jquery-3.6.0.min.js"></script>
+<script src = "https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script>
 $(function(){
 	$('#keyword').keyup(function(e){
@@ -43,9 +45,28 @@ $(function(){
 			"width=640,height=720,location=no,resizable=no,top=100,left=50");
 		}
 	});
-	
-	
 });
+function logout(){
+	var loginType = '<%=loginType%>';
+	if(loginType=='kakao'){
+		Kakao.init('f86207cb3e373497b43b01dbe07eb389');
+		if (Kakao.Auth.getAccessToken()) {
+		      Kakao.API.request({
+		        url: '/v1/user/unlink',
+		        success: function (response) {
+		        	console.log(response)
+		        	alert('카카오 로그아웃 되었습니다');
+		        },
+		        fail: function (error) {
+		          console.log(error)
+		        },
+		      })
+		      Kakao.Auth.setAccessToken(undefined)
+	    }
+	}
+	location.href="<%=request.getContextPath()%>/logout.jsp";
+}
+
 
 </script>
 <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
@@ -90,7 +111,7 @@ $(function(){
                     </div>
             </div>
             </div>            
-            <a href="<%=request.getContextPath()%>/logout.jsp" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">로그아웃<i class="fa fa-arrow-right ms-3"></i></a>
+            <a id="logout" onclick="logout()" href="#" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">로그아웃<i class="fa fa-arrow-right ms-3"></i></a>
             	
             <%}else{ %>
             </div>
