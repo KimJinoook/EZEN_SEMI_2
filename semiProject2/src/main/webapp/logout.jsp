@@ -8,6 +8,8 @@
 </head>
 <body>
 <%
+	String loginType = (String)session.getAttribute("loginType");
+	
 	session.invalidate();
 	response.sendRedirect("main.do");
 %>

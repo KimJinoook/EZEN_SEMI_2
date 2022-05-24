@@ -49,7 +49,7 @@ $(function(){
 function logout(){
 	var loginType = '<%=loginType%>';
 	if(loginType=='kakao'){
-		Kakao.init('f86207cb3e373497b43b01dbe07eb389');
+		Kakao.init('297d054dc5671c68361dcb8187d0bcc8');
 		if (Kakao.Auth.getAccessToken()) {
 		      Kakao.API.request({
 		        url: '/v1/user/unlink',

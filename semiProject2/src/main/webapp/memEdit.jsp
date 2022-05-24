@@ -19,11 +19,13 @@
 	String add=vo.getMem_add();
 	String add2=vo.getMem_add2();
 	String birth=vo.getMem_birth();
+	String tel=vo.getMem_tel();
 	
 	if(zipcode==null) zipcode="";
 	if(add==null) add="";
 	if(add2==null) add2="";
 	if(birth==null) birth="";
+	if(tel==null) tel="";
 %>
 <!DOCTYPE html>
 <html>
@@ -164,7 +166,7 @@
 					<h3 class="join_title">
 						<label for="id">아이디</label>
 					</h3>
-					<span class="box int_id">
+					<span class="box int_id2">
 					<input type="text" name="mem_id" id="userid" class="int" maxlength="20"
 					value="<%=userid %>" readonly="readonly" style="color: gray">					
 					</span>
@@ -245,7 +247,7 @@
 					</h3>
 					<span class="box int_mobile">
 					<input type="tel" name="mem_tel" id="tel" class="int" maxlength="16" placeholder="전화번호 입력"
-						value="<%=vo.getMem_tel()%>">
+						value="<%=tel%>">
 					</span>
 				</div>
 
