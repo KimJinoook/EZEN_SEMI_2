@@ -1,30 +1,45 @@
+<%@page import="com.semi2.review.model.ReviewVO"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="com.semi2.db.ReviewVO"%>
+<%@page import="com.semi2.mem.model.MemDAO"%>
+<%@page import="com.semi2.menu.model.MenuDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="java.sql.SQLException"%>
-<%@page import="com.semi2.menu.model.MenuVO"%>
+<%@page import="com.semi2.menu.model.MenuVO"%> 
 <%@page import="com.semi2.store.model.StoreVO"%>
 <%@page import="com.semi2.store.model.StoreDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+	request.setCharacterEncoding("utf-8");
 	String no = request.getParameter("no");	
-
-	//if(no==null || no.isEmpty()){%>
-		<!-- <script type="text/javascript">
-			alert("잘못된 url입니다.");
-			location.href="/* 리스트.jsp경로는 여기에 추가하기 */";
-		</script> -->
-		<%//return;
-	//}
-
+	
+	//가게
 	StoreDAO dao = new StoreDAO(); 
 	StoreVO Svo=null;
+	
+	//메뉴
+	MenuDAO menuDao = new MenuDAO();
 	List<MenuVO> list=null;
 	
-	/* try{
-		//Svo=dao.selectByNo(Integer.parseInt(no));
+	//회원
+	MemDAO memDao = new MemDAO();
+	List<MemVO> Mlist=null;
+	MemVO Mvo = null;
+	
+	//리뷰
+	List<ReviewVO> Rlist = null;
+	ReviewVO Rvo = null;
+	
+	try{
+		Svo = dao.selectByNo(Integer.parseInt(no));
+		list = menuDao.selectAll(Integer.parseInt(no));
+		Mlist = memDao.selectAll();
 	}catch(SQLException e){
 		e.printStackTrace();
-	} */
+	}
+	
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 %>
 <!DOCTYPE html>
 <html>
@@ -69,26 +84,26 @@
     </div>
     <!-- Spinner End -->
 
+
      <!-- Navbar Start -->
 	<%@include file="navbar.jsp"%>
 	<!-- Navbar End -->
     
-    <!-- 맛집 상세 이미지 -->
+    
+	<!--     맛집 상세 이미지
     <aside class="restaurant-photos">
 	    
     
     
     
     </aside>
-    <!-- 맛집 상세 이미지 끝 -->
+    맛집 상세 이미지 끝 -->
+    
     
     <!-- Page Header Start -->
     <div class="container-fluid page-header py-5 mb-5">
         <div class="container py-5">
-            <h1 class="display-3 text-white mb-3 animated slideInDown">맛집 이름!!<%-- <%=Svo.getName() %> --%></h1>
-            <nav aria-label="breadcrumb animated slideInDown">
-            	<a class="text-white" href="#">사진 더 보기</a>
-            </nav>
+            <h1 class="display-3 text-white mb-3 animated slideInDown"><%=Svo.getName() %></h1>
         </div>
     </div>
     <!-- Page Header End -->
@@ -103,21 +118,21 @@
             <div class="row g-0 mx-lg-0">
                 <div class="col-lg-6 contact-text py-5 wow fadeIn" data-wow-delay="0.5s">
                     <div class="p-lg-5 ps-lg-0">
-                        <h6 class="text-primary">등록일 : <%-- <%=Svo.getRegdate() %> --%></h6>
+                        <h6 class="text-primary">등록일 : <%=sdf.format(Svo.getRegdate()) %></h6>
                         <br>
-						<p>식당소개 : <%-- <%=Svo.getPreview() %> --%></p><br>
-                        <p>주소 :	 <%-- <%=Svo.getAdd() %> --%></p>
-						<p>전화번호 : <%-- <%=Svo.getTel() %> --%></p>
-						<p>음식종류 : <%-- <%=Svo.getKind() %> --%></p>
-						<p>가격대 : <%-- <%=Svo.getPrice() %> --%></p>
-						<p>주차 : <%-- <%=Svo.getParking() %> --%></p>
-						<p>영업시간 : <%-- <%=Svo.getTime() %> --%></p>
-						<p>휴일 : <%-- <%=Svo.getRestDay() %> --%></p><br>
+						<p>식당소개 : <%=Svo.getPreview() %></p><br>
+                        <p>주소 :	 <%=Svo.getAdd() %> </p>
+						<p>전화번호 : <%=Svo.getTel() %> </p>
+						<p>음식종류 : <%=Svo.getKind() %> </p>
+						<p>가격대 : <%=Svo.getPrice() %> </p>
+						<p>주차 : <%=Svo.getParking() %> </p>
+						<p>영업시간 : <%=Svo.getTime() %> </p>
+						<p>휴일 : <%=Svo.getRestDay() %> </p><br>
 						<p>메뉴 : 
-							<%-- <%for(int i=0;i<list.size();i++){
+							<%for(int i=0;i<list.size();i++){
 								MenuVO vo = list.get(i);%>
 								<p>메뉴이름 : <%=vo.getMenu_name() %> | 가격 : <%=vo.getMenu_price() %></p>
-							<%}%> --%>
+							<%}%>
 						</p>
                     </div>
                 </div>
@@ -127,13 +142,13 @@
 				<script>
 					var container = document.getElementById('map');
 					var options = {
-						center: new kakao.maps.LatLng(37.579200, 126.982069),
+						center: new kakao.maps.LatLng(<%=Svo.getLocationlati()%>, <%=Svo.getLocationlongi()%>),
 						level: 5
 					};
 			
 					var map = new kakao.maps.Map(container, options);
 					
-					var markerPosition  = new kakao.maps.LatLng(37.579200, 126.982069); 
+					var markerPosition  = new kakao.maps.LatLng(<%=Svo.getLocationlati()%>, <%=Svo.getLocationlongi()%>); 
 			
 					var marker = new kakao.maps.Marker({
 					    position: markerPosition
@@ -141,19 +156,6 @@
 					
 					marker.setMap(map);
 				</script>
-                
-                <!-- <div class="col-lg-6 pe-lg-0" style="min-height: 400px;">
-                    <iframe class="position-absolute w-100 h-100" style="object-fit: cover;" src="storemap/storemap.jsp" aria-hidden="false" tabindex="-1">
-					</iframe>
-					<div class="col-lg-6 pe-lg-0" style="min-height: 400px;">
-                    <iframe class="position-absolute w-100 h-100" style="object-fit: cover;"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3001156.4288297426!2d-78.01371936852176!3d42.72876761954724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccc4bf0f123a5a9%3A0xddcfc6c1de189567!2sNew%20York%2C%20USA!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd"
-                    frameborder="0" allowfullscreen="" aria-hidden="false"
-                    tabindex="0"></iframe>
-                </div> -->
-            </div>
-        </div>
-    </div>
     <!-- Contact End -->
     
     
@@ -163,43 +165,64 @@
             <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
                 <div class="testimonial-item text-center">
                     <div class="testimonial-img position-relative">
-                        <img class="img-fluid rounded-circle mx-auto mb-5" src="img/testimonial-1.jpg">
+                        <img class="img-fluid rounded-circle mx-auto mb-5" src="<%=Mvo.getMem_pic()%>">
                         <div class="btn-square bg-primary rounded-circle">
                             <i class="fa fa-quote-left text-white"></i>
                         </div>
                     </div>
                     <div class="testimonial-text text-center rounded p-4">
-                        <p>Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea clita.</p>
-                        <h5 class="mb-1">Client Name</h5>
-                        <span class="fst-italic">Profession</span>
+                        <p><%if(Mvo.getMem_no()==Rvo.getMemno()){
+                        	Rvo.getReview();
+                        } %>
+                        </p>
+                        <h5 class="mb-1">
+                        <%if(Mvo.getMem_no()==Rvo.getMemno()){
+	                        Mvo.getMem_id();
+                        } %>
+                        </h5>
                     </div>
                 </div>
                 <div class="testimonial-item text-center">
                     <div class="testimonial-img position-relative">
-                        <img class="img-fluid rounded-circle mx-auto mb-5" src="img/testimonial-2.jpg">
+                        <img class="img-fluid rounded-circle mx-auto mb-5" src="<%=Mvo.getMem_pic()%>">
                         <div class="btn-square bg-primary rounded-circle">
                             <i class="fa fa-quote-left text-white"></i>
                         </div>
                     </div>
                     <div class="testimonial-text text-center rounded p-4">
-                        <p>Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea clita.</p>
-                        <h5 class="mb-1">Client Name</h5>
-                        <span class="fst-italic">Profession</span>
+						<p><%if(Mvo.getMem_no()==Rvo.getMemno()){
+                        	Rvo.getReview();
+                        } %>
+                        </p>
+                        <h5 class="mb-1">
+                        <%if(Mvo.getMem_no()==Rvo.getMemno()){
+	                        Mvo.getMem_id();
+                        } %>
+                        </h5>
                     </div>
                 </div>
                 <div class="testimonial-item text-center">
                     <div class="testimonial-img position-relative">
-                        <img class="img-fluid rounded-circle mx-auto mb-5" src="img/testimonial-3.jpg">
+                        <img class="img-fluid rounded-circle mx-auto mb-5" src="<%=Mvo.getMem_pic()%>">
                         <div class="btn-square bg-primary rounded-circle">
                             <i class="fa fa-quote-left text-white"></i>
                         </div>
                     </div>
                     <div class="testimonial-text text-center rounded p-4">
-                        <p>Clita clita tempor justo dolor ipsum amet kasd amet duo justo duo duo labore sed sed. Magna ut diam sit et amet stet eos sed clita erat magna elitr erat sit sit erat at rebum justo sea clita.</p>
-                        <h5 class="mb-1">Client Name</h5>
-                        <span class="fst-italic">Profession</span>
+						<p><%if(Mvo.getMem_no()==Rvo.getMemno()){
+                        	Rvo.getReview();
+                        } %>
+                        </p>
+                        <h5 class="mb-1">
+                        <%if(Mvo.getMem_no()==Rvo.getMemno()){
+	                        Mvo.getMem_id();
+                        } %>
+                        </h5>
                     </div>
                 </div>
+            </div>
+            <div style=" text-align: center;">
+                <a href="review.jsp?stno=<%=Svo.getNo() %>" class="nav-item nav-link active">더보기</a>
             </div>
         </div>
     </div>
