@@ -34,7 +34,6 @@ body {
 	left: 50%;
 	transform: translate(-50%);
 	width: 384px;
-	background-color:rgb(246,247,248);
 }
 
 /* 입력폼 */
@@ -129,21 +128,53 @@ select {
 	border: 0;
 	cursor: pointer;
 	color: #fff;
-	background-color: #08a600;
+	background-color: #32C36C;
 	font-size: 20px;
 	font-family: Dotum, '돋움', Helvetica, sans-serif;
 	font-weight: bold;
 }
 #btnLogin {
-	width: 100%;
+	width: 72%;
+	padding: 14px 0 17px;
+	border: 0;
+	cursor: pointer;
+	color: #fff;
+	background-color: #32C36C;
+	font-size: 17px;
+	font-family: Dotum, '돋움', Helvetica, sans-serif;
+	font-weight: bold;
+	border-radius: 30px;
+	margin-left: 53px;
+	margin-bottom: 7px;
+	margin-top: -14px;
+	display: block;
+}
+
+span.reg {margin-left: 40px;
+			font-size: smaller;
+			display: block;}
+span.other {font-size: smaller;
+			display: block;
+			margin-top: 17px;}
+			
+.kakao_login {border: 1px solid #ebe838;}
+
+a#reauthenticate-popup-btn {color: gray;}
+
+span.kakao {margin-left: 77px;}
+
+#btnRegister {
+	width: 73%;
 	padding: 21px 0 17px;
 	border: 0;
 	cursor: pointer;
 	color: #fff;
 	background-color: #08a600;
-	font-size: 20px;
+	font-size: 16px;
 	font-family: Dotum, '돋움', Helvetica, sans-serif;
 	font-weight: bold;
+	border-radius: 30px;
+	margin-left: 53px;
 }
 
 span.box.int_zipcode {
@@ -153,7 +184,6 @@ span.box.int_zipcode {
 	margin-right: 32px;
 }
 .box.int_id {
-	width: 178px;
 	display: inline-block;
 	margin-bottom: 12px;
 	margin-right: 32px;
@@ -171,7 +201,7 @@ span.box.int_address {
 	border: 0;
 	cursor: pointer;
 	color: #fff;
-	background-color: #08a600;
+	background-color: #32C36C;
 	font-size: 17px;
 	font-family: Dotum, '돋움', Helvetica, sans-serif;
 	font-weight: bold;
@@ -179,7 +209,7 @@ span.box.int_address {
 	border: 0;
 	cursor: pointer;
 	color: #fff;
-	background-color: #08a600;
+	background-color: #32C36C;
 	font-size: 17px;
 	font-family: Dotum, '돋움', Helvetica, sans-serif;
 	font-weight: bold;
@@ -192,7 +222,7 @@ span.box.int_address {
 	border: 0;
 	cursor: pointer;
 	color: #fff;
-	background-color: #08a600;
+	background-color: #32C36C;
 	font-size: 17px;
 	font-family: Dotum, '돋움', Helvetica, sans-serif;
 	font-weight: bold;
@@ -200,8 +230,23 @@ span.box.int_address {
 	border: 0;
 	cursor: pointer;
 	color: #fff;
-	background-color: #08a600;
+	background-color: #32C36C;
 	font-size: 17px;
 	font-family: Dotum, '돋움', Helvetica, sans-serif;
 	font-weight: bold;
+}
+
+h3.out {margin-bottom: 40px;}
+
+#btnOut{
+	width: 100%;
+	padding: 21px 0 17px;
+	border: 0;
+	cursor: pointer;
+	color: #fff;
+	background-color: #acacac;
+	font-size: 20px;
+	font-family: Dotum, '돋움', Helvetica, sans-serif;
+	font-weight: bold;
+	border-radius: 30px;
 }

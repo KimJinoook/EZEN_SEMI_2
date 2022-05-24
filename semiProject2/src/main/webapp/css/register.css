@@ -126,10 +126,11 @@ select {
 	border: 0;
 	cursor: pointer;
 	color: #fff;
-	background-color: #08a600;
+	background-color: #32C36C;
 	font-size: 20px;
 	font-family: Dotum, '돋움', Helvetica, sans-serif;
 	font-weight: bold;
+	border-radius: 30px;
 }
 #btnLogin {
 	width: 100%;
@@ -137,7 +138,7 @@ select {
 	border: 0;
 	cursor: pointer;
 	color: #fff;
-	background-color: #08a600;
+	background-color: #32C36C;
 	font-size: 20px;
 	font-family: Dotum, '돋움', Helvetica, sans-serif;
 	font-weight: bold;
@@ -148,6 +149,12 @@ span.box.int_zipcode {
 	display: inline-block;
 	margin-bottom: 12px;
 	margin-right: 32px;
+}
+.box int_id2{
+	display: inline-block;
+	margin-bottom: 12px;
+	margin-right: 32px;
+	padding-right: 14px;
 }
 .box.int_id {
 	width: 178px;
@@ -168,7 +175,7 @@ span.box.int_address {
 	border: 0;
 	cursor: pointer;
 	color: #fff;
-	background-color: #08a600;
+	background-color: #32C36C;
 	font-size: 17px;
 	font-family: Dotum, '돋움', Helvetica, sans-serif;
 	font-weight: bold;
@@ -176,10 +183,11 @@ span.box.int_address {
 	border: 0;
 	cursor: pointer;
 	color: #fff;
-	background-color: #08a600;
+	background-color: #32C36C;
 	font-size: 17px;
 	font-family: Dotum, '돋움', Helvetica, sans-serif;
 	font-weight: bold;
+	border-radius: 30px;
 }
 
 #btnChkId {
@@ -189,7 +197,7 @@ span.box.int_address {
 	border: 0;
 	cursor: pointer;
 	color: #fff;
-	background-color: #08a600;
+	background-color: #32C36C;
 	font-size: 17px;
 	font-family: Dotum, '돋움', Helvetica, sans-serif;
 	font-weight: bold;
@@ -197,7 +205,7 @@ span.box.int_address {
 	border: 0;
 	cursor: pointer;
 	color: #fff;
-	background-color: #08a600;
+	background-color: #32C36C;
 	font-size: 17px;
 	font-family: Dotum, '돋움', Helvetica, sans-serif;
 	font-weight: bold;
