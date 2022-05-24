@@ -51,41 +51,39 @@
 				event.preventDefault();
 			}
 		});
-		
-		$('#kakaoLogin').click(function(){
-			Kakao.init('297d054dc5671c68361dcb8187d0bcc8');
-
-			Kakao.Auth.login({
-		        success: function(authObj) {
-		         
-		          //2. 로그인 성공시, API 호출
-		          Kakao.API.request({
-		            url: '/v2/user/me',
-		            success: function(res) {
-		              console.log(res);
-		              var id = res.id;
-		              var account = res.kakao_account;
-		              $('#form-kakao-login input[name=email]').val(account.email);
-		              $('#form-kakao-login input[name=nick]').val(account.profile.nickname);
-		              $('#form-kakao-login input[name=img]').val(account.profile.img);
-					  scope : 'account_email';
-					alert('로그인성공');
-					document.querySelector('#form-kakao-login').submit();
-				
-
-		              
-		        }
-		          })
-		          console.log(authObj);
-		          var token = authObj.access_token;
-		        },
-		        fail: function(err) {
-		          alert(JSON.stringify(err));
-		        }
-		      });
-		});
 	});
-	
+	function loginFormWithKakao(){
+		Kakao.init('f86207cb3e373497b43b01dbe07eb389');
+
+		Kakao.Auth.login({
+	        success: function(authObj) {
+	         
+	          //2. 로그인 성공시, API 호출
+	          Kakao.API.request({
+	            url: '/v2/user/me',
+	            success: function(res) {
+	              console.log(res);
+	              var id = res.id;
+	              var account = res.kakao_account;
+	              $('#form-kakao-login input[name=email]').val(account.email);
+	              $('#form-kakao-login input[name=nick]').val(account.profile.nickname);
+	              $('#form-kakao-login input[name=img]').val(account.profile.img);
+				  scope : 'account_email';
+				alert('로그인성공');
+				document.querySelector('#form-kakao-login').submit();
+			
+
+	              
+	        }
+	          })
+	          console.log(authObj);
+	          var token = authObj.access_token;
+	        },
+	        fail: function(err) {
+	          alert(JSON.stringify(err));
+	        }
+	      });
+	};
 </script>
 </head>
 <body>
@@ -127,20 +125,24 @@
 			<!-- JOIN BTN-->
 			<div class="btn_area">
 				<input type="submit" id="btnLogin" value="로그인">
-				<input type="button" onclick="location.href='register.do'" id="btnRegister" value="회원가입">
-		
-		  					<img id="kakaoLogin" src="img/kakao_login.png" width="200" alt="카카오 로그인 버튼"/>
-				
-			</div>
+					<span class="reg">아직 회원이 아닌가요? <a href="register.do">여기</a>를 눌러서 회원가입하기</span>
+			<span class="other">――――――――――――― 또는 ―――――――――――――</span>
+			<br>
+			<div class="kakao_login">
+	<a class="kakao" id="reauthenticate-popup-btn" href="javascript:loginFormWithKakao()">
+		<img width="100%" src="img/kakaotalk_logo.png">
+	</a>
+    </div>
 		</div>
+	</div>
 	</form>
-	<a href="http://developers.kakao.com/logout">카카오 로그아웃</a>
+	</div>
+	
 	<form id="form-kakao-login" method="post" action="kakaoLogin_ok.jsp">
 		<input type="hidden" name="email"/>
 		<input type="hidden" name="nick"/>
 		<input type="hidden" name="img"/>
 	</form>
-	</div>
 	<!-- content-->
 </body>
 </html>
