@@ -154,7 +154,8 @@
 		 		}else if($('#id').val() == $('#c_id').val() //로그인정보=작성자정보 일치성공!
 		 				&&  $('#pwd').val() == $('#c_pwd').val()){ 
 		 			if(confirm('삭제하시겠습니까?')){
-		 				location.href='b_comment_del.do?no='+$('#c_no').val()
+		 				var cno = $(this).next().val();
+		 				location.href='b_comment_del.do?no='+cno
 		 						+'&bdNo='+<%=no%>+'&type='+<%=type%>;	
 		 			}
 		 		
@@ -214,13 +215,13 @@
 							<div>
 							<input type="hidden" id="c_pwd" value="<%=commentVo.getPwd() %>">
 							<input type="hidden" id="c_id" value="<%=commentVo.getId() %>">
-							<input type="hidden" id="c_no" value="<%=commentVo.getNo() %>">
 							</div>					
 							<tr style="line-height: 0.2">
 							<td class="writer"><%=commentVo.getId() %></td>
 							<td class="content"><%=commentVo.getContent() %></td>
 							<td class="date"><%=sdf.format(commentVo.getRegdate())%></td>
-							<td class="btnX"><input type="button" value="x"></td>
+							<td class="btnX"><input type="button" value="x"><input type="hidden" id="c_no" value="<%=commentVo.getNo() %>"></td>
+							
 							</tr>
 						<%}//for %>
 					<!-- 반복 끝 -->
