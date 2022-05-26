@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import com.semi2.db.ConnectionPoolMgr;
 
 public class MemDAO {
@@ -83,7 +82,7 @@ public class MemDAO {
 			ps.setString(9, vo.getMem_pic());
 			
 			int cnt=ps.executeUpdate();
-			System.out.println("회원가입 결과 cnt="+cnt+", 입력값 vo="+vo);
+			System.out.println("�쉶�썝媛��엯 寃곌낵 cnt="+cnt+", �엯�젰媛� vo="+vo);
 			return cnt;
 		}finally {
 			pool.dbClose(ps, con);
@@ -106,12 +105,12 @@ public class MemDAO {
 			if(rs.next()) {
 				int count=rs.getInt(1);
 				if(count >0) {
-					result=MemService.UNUSABLE_ID; //아이디 존재, 사용불가
+					result=MemService.UNUSABLE_ID; //�븘�씠�뵒 議댁옱, �궗�슜遺덇�
 				}else {
-					result=MemService.USABLE_ID; //아이디 사용가능
+					result=MemService.USABLE_ID; //�븘�씠�뵒 �궗�슜媛��뒫
 				}
 			}
-			System.out.println("아이디 중복확인 결과 result="+result+", 매개변수 userid="+userid);
+			System.out.println("�븘�씠�뵒 以묐났�솗�씤 寃곌낵 result="+result+", 留ㅺ컻蹂��닔 userid="+userid);
 			
 			return result;
 		}finally {
@@ -143,8 +142,8 @@ public class MemDAO {
 				result=MemService.NONE_USERID;
 			}
 			
-			System.out.println("로그인 체크 결과 result="+result
-					+", 매개변수 userid="+userid+", pwd="+pwd);
+			System.out.println("濡쒓렇�씤 泥댄겕 寃곌낵 result="+result
+					+", 留ㅺ컻蹂��닔 userid="+userid+", pwd="+pwd);
 			return result;
 			
 		}finally {
@@ -178,7 +177,7 @@ public class MemDAO {
 				vo.setMem_pic(rs.getString("mem_pic"));
 				vo.setMem_manager(rs.getString("mem_manager"));
 			}
-			System.out.println("아이디로 조회 결과 vo="+vo+", 매개변수 userid="+userid);
+			System.out.println("�븘�씠�뵒濡� 議고쉶 寃곌낵 vo="+vo+", 留ㅺ컻蹂��닔 userid="+userid);
 			
 			return vo;
 		}finally {
@@ -206,7 +205,7 @@ public class MemDAO {
 			ps.setString(7, vo.getMem_id());
 			
 			int cnt=ps.executeUpdate();
-			System.out.println("회원 수정 결과 cnt="+cnt+", 매개변수 vo="+vo);
+			System.out.println("�쉶�썝 �닔�젙 寃곌낵 cnt="+cnt+", 留ㅺ컻蹂��닔 vo="+vo);
 			
 			return cnt;
 		}finally {
@@ -262,7 +261,7 @@ public class MemDAO {
 			ps.setString(1, userid);
 			
 			int cnt=ps.executeUpdate();
-			System.out.println("회원 탈퇴 결과 cnt="+cnt+", 매개변수 userid="+userid);
+			System.out.println("�쉶�썝 �깉�눜 寃곌낵 cnt="+cnt+", 留ㅺ컻蹂��닔 userid="+userid);
 			
 			return cnt;
 		}finally {
@@ -270,4 +269,42 @@ public class MemDAO {
 		}
 	}
 	
+	public MemVO selectByNo(int no) throws SQLException {
+		Connection con=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+
+		MemVO vo = new MemVO();
+		try {
+			//1,2
+			con=pool.getConnection();
+
+			//3
+			String sql="select * from s2_mem where mem_no=?";
+			ps=con.prepareStatement(sql);
+			ps.setInt(1, no);
+
+			//4
+			rs=ps.executeQuery();
+			if(rs.next()) {
+				vo.setMem_no(no);
+				vo.setMem_name(rs.getString("MEM_NAME"));
+				vo.setMem_id(rs.getString("MEM_ID"));
+				vo.setMem_pw(rs.getString("MEM_PW"));
+				vo.setMem_birth(rs.getString("MEM_BIRTH"));
+				vo.setMem_tel(rs.getString("MEM_TEL"));
+				vo.setMem_zipcode(rs.getString("MEM_ZIPCODE"));		
+				vo.setMem_add(rs.getString("MEM_ADD"));
+				vo.setMem_add2(rs.getString("MEM_ADD2"));
+				vo.setMem_pic(rs.getString("MEM_PIC"));
+				vo.setMem_manager(rs.getString("MEM_MANAGER"));
+			}
+
+			System.out.println("vo="+vo+", 매개변수 no="+no);
+
+			return vo;
+		}finally {
+			pool.dbClose(rs, ps, con);
+		}
+	}
 }
