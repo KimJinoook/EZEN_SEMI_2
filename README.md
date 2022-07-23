@@ -47,8 +47,9 @@
 ***
 # :bulb: 주요 기능 (소제목 클릭 시 상세 설명 이동)   
 
-## [1. 웹소켓 접속자 실시간 채팅](https://github.com/KimJinoook/EZEN_SEMI_2/blob/main/websocket.md) 
-
+### [1. 웹소켓 접속자 실시간 채팅](https://github.com/KimJinoook/EZEN_SEMI_2/blob/main/websocket.md)   
+### [2. 주소를 위도경도로 자동 변환](https://github.com/KimJinoook/EZEN_SEMI_2/blob/main/mapSearch.md)   
+### [3. 좋아요 평점 기능구현](https://github.com/KimJinoook/EZEN_SEMI_2/blob/main/like.md)   
 
 
 
