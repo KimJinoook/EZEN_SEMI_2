@@ -45,7 +45,9 @@
 
 
 ***
-# :bulb: 주요 기능 (소제목 클릭 시 상세 설명 이동)
+# :bulb: 주요 기능 (소제목 클릭 시 상세 설명 이동)   
+
+## [1. 웹소켓 접속자 실시간 채팅](https://github.com/KimJinoook/EZEN_SEMI_2/blob/main/websocket.md) 
 
 
 
