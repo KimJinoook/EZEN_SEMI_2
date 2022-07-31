@@ -4,7 +4,7 @@
 
 
 
-# MetaUs
+# 이젠 먹으러 갑니다
    
 ### BackEnd   
 <img src="https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=Java&logoColor=white"/></a>
